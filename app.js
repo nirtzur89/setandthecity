@@ -49,7 +49,7 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 // default value for title local
 app.locals.title = 'Set And The CITY!!! ';
 
-
+// random comment
 
 const index = require('./routes/index');
 app.use('/', index);
