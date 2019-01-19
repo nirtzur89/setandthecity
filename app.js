@@ -54,5 +54,8 @@ app.locals.title = 'Set And The CITY!!!';
 const index = require('./routes/index');
 app.use('/', index);
 
+const signupPers = require('./routes/signup_pers');
+app.use('/signup_pers', signupPers);
+
 
 module.exports = app;
