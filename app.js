@@ -47,15 +47,12 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
 // default value for title local
-app.locals.title = 'Set And The CITY!!!';
+app.locals.title = 'Set And The CITY!!! ';
 
 
 
 const index = require('./routes/index');
 app.use('/', index);
-
-const signupPers = require('./routes/signup_pers');
-app.use('/signup_pers', signupPers);
 
 
 module.exports = app;
