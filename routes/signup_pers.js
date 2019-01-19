@@ -2,8 +2,7 @@ const express = require('express');
 const router  = express.Router();
 
 /* GET personal Signup page */
-router.get('/signup_pers', (req, res, next) => {
-  console.log('blablablablabla')
+router.get('/signup', (req, res, next) => {
   res.send('Personal Signup Page');
 });
 
