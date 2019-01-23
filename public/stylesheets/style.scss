@@ -1,8 +1,17 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+/***********
+1. Fonts
+***********/
+
+@font-face
+{
+	font-family: Futura;
+	src: url(./fonts/FuturaLT-Bold.ttf);
 }
 
-a {
-  color: #00B7FF;
+/*********************************
+2. Body and some general stuff
+*********************************/
+
+.body {
+  background-color: black;
 }
