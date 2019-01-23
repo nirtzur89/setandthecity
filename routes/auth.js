@@ -20,18 +20,21 @@ passport.use(
        clientID: client_id2,
        clientSecret: client_secret2,
        callbackURL: '/logincon'
-    },
-    function(accessToken, refreshToken, expires_in, profile, done) {
-      User.find({ spotifyId: profile.id }, function(err, user) {
-        if (user === null) {
-          User.create({ spotifyId: profile.id }).then((user) => {
-            return done(err, user); 
-          })
-        } else {
-          return done(err, user); 
-        }
-      });
+    },  (accessToken, refreshToken, expires_in, profile, done) => {
+      console.log('passport callback fired')
+      console.log(profile);
     }
+    // function(accessToken, refreshToken, expires_in, profile, done) {
+    //   User.find({ spotifyId: profile.id }, function(err, user) {
+    //     if (user === null) {
+    //       User.create({ spotifyId: profile.id }).then((user) => {
+    //         return done(err, user); 
+    //       })
+    //     } else {
+    //       return done(err, user); 
+    //     }
+    //   });
+    // }
   )
 );
 
@@ -57,21 +60,21 @@ function(req, res) {
   // function will not be called.
 });
 
-router.get('/logincon', (req,res) =>{
+router.get('/', passport.authenticate('spotify'),(req,res) =>{
   res.send('hello new user');
 });
 
-  router.get(
-    '/auth',
-    passport.authenticate('spotify', { 
-      //successRedirect:'/id',
-      failureRedirect: '/auth' }),
-    function(req, res) {
-      console.log('in post')
-      // Successful authentication, redirect home.
-      res.redirect('/');
-    }
-  );
+  // router.get(
+  //   '/auth',
+  //   passport.authenticate('spotify', { 
+  //     //successRedirect:'/id',
+  //     failureRedirect: '/auth' }),
+  //   function(req, res) {
+  //     console.log('in post')
+  //     // Successful authentication, redirect home.
+  //     res.redirect('/');
+  //   }
+  // );
 
 // router.get('/login', function(req, res) {
 //   var scopes = 'user-read-private user-read-email';
