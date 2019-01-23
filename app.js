@@ -1,18 +1,20 @@
 require('dotenv').config();
 
-const bodyParser   = require('body-parser');
-const cookieParser = require('cookie-parser');
-const express      = require('express');
-const favicon      = require('serve-favicon');
-const hbs          = require('hbs');
-const mongoose     = require('mongoose');
-const logger       = require('morgan');
-const User         = require('./models/user');
-const path         = require('path');
-const passport     = require('passport');
-const bcrypt       = require('bcryptjs');
+const bodyParser      = require('body-parser');
+const cookieParser    = require('cookie-parser');
+const express         = require('express');
+const favicon         = require('serve-favicon');
+const hbs             = require('express-handlebars');
+const mongoose        = require('mongoose');
+const logger          = require('morgan');
+const User            = require('./models/user');
+const path            = require('path');
+const passport        = require('passport');
+const bcrypt          = require('bcryptjs');
 const SpotifyStrategy = require('passport-spotify').Strategy;
+const Spotify         = require('spotify-web-api-js');
 
+//mongoose
 mongoose
   .connect('mongodb://localhost/204U', {useNewUrlParser: true})
   .then(x => {
@@ -27,54 +29,7 @@ const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.
 
 const app = express();
 app.use(bodyParser.urlencoded({extended: true}))
-//Passport middleware configuration 
 
-passport.serializeUser(  function(user, cb) { cb(null, user); });
-passport.deserializeUser(function(obj,  cb) { cb(null, obj);  });
-
-const client_id = 'a3676c8b791c49048c222a84f7fd770c';
-const client_secret = '54708907189e407e8c5f6eb2328f9374';
-
-var session = require ('express-session')
-app.use(session({
-  secret:"204u",
-  resave: false,
-  saveUninitialized: false
-}));
-
-app.use(passport.initialize());
-app.use(passport.session());
-
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-
-/* GET personal Signup page */
-// router.get('/', (req, res, next) => {
-//   console.log("WE ARE AT LOGIN")
-//   res.render('login');
-// });
-
-// passport-spotify auth
-// passport.use(
-//   new SpotifyStrategy(
-//     {
-//       clientID: client_id,
-//       clientSecret: client_secret,
-//       callbackURL: 'http://localhost:3000/auth/spotify/callback'
-//     },
-//     function(accessToken, refreshToken, expires_in, profile, done) {
-//       User.find({ spotifyId: profile.id }, function(err, user) {
-//         if (user === null) {
-//           User.create({ spotifyId: profile.id }).then((user) => {
-//             return done(err, user); 
-//           })
-//         } else {
-//           return done(err, user); 
-//         }
-//       });
-//     }
-//   )
-// );
 
 // Middleware Setup
 app.use(logger('dev'));
@@ -90,7 +45,7 @@ app.use(require('node-sass-middleware')({
   sourceMap: true
 }));
       
-
+app.engine('hbs', hbs({extname: 'hbs', defaultLayout:'layout' , layoutsDir: __dirname + '/views'}))
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
