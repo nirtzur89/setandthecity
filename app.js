@@ -26,7 +26,7 @@ const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
 
 const app = express();
-
+app.use(bodyParser.urlencoded({extended: true}))
 //Passport middleware configuration 
 
 passport.serializeUser(  function(user, cb) { cb(null, user); });
@@ -35,6 +35,19 @@ passport.deserializeUser(function(obj,  cb) { cb(null, obj);  });
 const client_id = 'a3676c8b791c49048c222a84f7fd770c';
 const client_secret = '54708907189e407e8c5f6eb2328f9374';
 
+var session = require ('express-session')
+app.use(session({
+  secret:"204u",
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 /* GET personal Signup page */
 // router.get('/', (req, res, next) => {
 //   console.log("WE ARE AT LOGIN")
@@ -42,33 +55,27 @@ const client_secret = '54708907189e407e8c5f6eb2328f9374';
 // });
 
 // passport-spotify auth
-passport.use(
-  new SpotifyStrategy(
-    {
-      clientID: client_id,
-      clientSecret: client_secret,
-      callbackURL: 'http://localhost:3000/auth/spotify/callback'
-    },
-    function(accessToken, refreshToken, expires_in, profile, done) {
-      User.find({ spotifyId: profile.id }, function(err, user) {
-        if (user === null) {
-          User.create({ spotifyId: profile.id }).then((user) => {
-            return done(err, user); 
-          })
-        } else {
-          return done(err, user); 
-        }
-      });
-    }
-  )
-);
-app.use(passport.initialize());
-app.use(passport.session());
+// passport.use(
+//   new SpotifyStrategy(
+//     {
+//       clientID: client_id,
+//       clientSecret: client_secret,
+//       callbackURL: 'http://localhost:3000/auth/spotify/callback'
+//     },
+//     function(accessToken, refreshToken, expires_in, profile, done) {
+//       User.find({ spotifyId: profile.id }, function(err, user) {
+//         if (user === null) {
+//           User.create({ spotifyId: profile.id }).then((user) => {
+//             return done(err, user); 
+//           })
+//         } else {
+//           return done(err, user); 
+//         }
+//       });
+//     }
+//   )
+// );
 
-var session = require ('express-session')
-app.use(session({
-  secret:"204u"
-}));
 // Middleware Setup
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -101,6 +108,9 @@ app.use('/', home);
 
 const auth = require('./routes/auth');
 app.use('/auth', auth);
+
+const confirm = require('./routes/confirm');
+app.use('/logincon', confirm);
 
 const personalPage = require('./routes/personal');
 app.use('/id', personalPage);

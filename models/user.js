@@ -1,13 +1,15 @@
 const mongoose     = require('mongoose');
+const passportLocalMongoose = require('passport-local-mongoose')
 
-const UserSchema = new  mongoose.Schema({
+var UserSchema = new  mongoose.Schema({
   token:    String,
   spotifyId: String,
   name:     String,
   username: String,
-  email:    String,
+  email:    String
 });
 
-const User = mongoose.model('User', UserSchema);
+UserSchema.plugin(passportLocalMongoose);
 
-module.exports = User;
+
+module.exports = mongoose.model('User', UserSchema);; 
