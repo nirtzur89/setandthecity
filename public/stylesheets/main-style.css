@@ -3,6 +3,9 @@
   src: url("/fonts/FuturaLT-Bold.ttf");
 }
 
+
+/* general stuff */
+
 * {
 	font-family: 'Futura', sans-serif;
   color: white;
@@ -13,12 +16,16 @@
   text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
 }
 
-.container {
-  margin-left: 0;
-}
-
 body {
   background-color: black;
+}
+
+
+/* login via spotify button on home.hbs */
+.authButton {
+  position: relative;
+  text-decoration: none;
+  color: white;
 }
 
 /*header*/
@@ -43,6 +50,30 @@ body {
 	-ms-transition: all 400ms ease;
 	-o-transition: all 400ms ease;
 	transition: all 400ms ease;
+}
+
+/* Main Div personal page */
+.mainDiv {
+  border-style: solid;
+  border-color: white;
+  margin-top: 50%;
+}
+
+.userInfo {
+  width: 80px;
+  height: 100px;
+  border-style: solid;
+  border-color: blue;
+}
+
+/* NewsFeed */
+.container {
+  margin-left: 0;
+}
+
+.newsfeed {
+  border-style: solid;
+  border-color: yellow;
 }
 
 /*logout*/
