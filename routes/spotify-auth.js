@@ -38,16 +38,17 @@ passport.use(
        callbackURL: '/logincon'
     },(accessToken, refreshToken, expires_in, profile, done) => {
       
-      User.findOne({spotifyId : profile.id})
+      User.findOne({spotifyId : profile._json.id})
       .then((currentUser) =>{
         if(currentUser){
           console.log('user ' + currentUser + ' already exists');
           done(null,currentUser);
+          console.log(profile);
         } else {
           new User({
-            username:  profile.display_name,
-            email:     profile.email,
-            spotifyId: profile.id
+            username:  profile._json.display_name,
+            email:     profile._json.email,
+            spotifyId: profile._json.id
           }).save()
           .then((newUser) => {
             console.log('new user created' + newUser);
