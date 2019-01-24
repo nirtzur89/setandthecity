@@ -54,9 +54,9 @@ body {
 
 /* Main Div personal page */
 .mainDiv {
+  position: relative;
   border-style: solid;
   border-color: white;
-  margin-top: 50%;
 }
 
 .userInfo {
@@ -64,6 +64,8 @@ body {
   height: 100px;
   border-style: solid;
   border-color: blue;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 /* NewsFeed */
