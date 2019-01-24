@@ -32,7 +32,7 @@ router.get('/', authCheck ,(req, res) => {
   var userName = req.user.username;
   var id = req.user.spotifyId;
 
-  res.render('spotitest',{userName:userName , id:id})
+  res.render('personal',{userName:userName , id:id})
 
    spotifyApi.getFollowedArtists(userName)
    .then(function(data) {
