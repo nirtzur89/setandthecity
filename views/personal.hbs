@@ -10,18 +10,22 @@
   </div>
 </header>
 
-<div class="mainDiv">
+<div class="mainDiv d-flex flex-row flex-wrap align-items-center justify-content-around">
+
+  <div class="userInfo d-inline-flex">
+
+  </div>
 
   <!-- Newsfeed -->
 
-  <div class="newsfeed">
+  <div class="newsfeed d-inline-flex flex-row align-items-center justify-content-center">
     <div class="container">
       <div class="row" style="z-index:10;">
         <div class="col">
           <div class="section_title_container">
             <div class="section_subtitle">Events</div>
             <div class="section_title">
-              <h1>New Songs 4 U</h1>
+              <h3>New Songs 4 U</h3>
             </div>
           </div>
         </div>
@@ -131,8 +135,4 @@
       </div>
     </div>
   </div>
-<p>ID: {{{userName}}}</p>
-<p>Profile:
-    <a href=" {{ user.profileUrl }}">{{ user.profileUrl }}</a>
-</p>
 </div>
