@@ -7,8 +7,12 @@ const favicon         = require('serve-favicon');
 const hbs             = require('express-handlebars');
 const mongoose        = require('mongoose');
 const logger          = require('morgan');
-const User            = require('./models/user');
 const path            = require('path');
+const cookieSession   = require('cookie-session');
+
+const passportSetup   = require('./routes/spotify-auth')
+
+const User            = require('./models/user');
 const passport        = require('passport');
 const bcrypt          = require('bcryptjs');
 const SpotifyStrategy = require('passport-spotify').Strategy;
@@ -36,6 +40,14 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(cookieSession({
+  maxAge: 24*60*60*1000,
+  keys:['awsomethree']
+}))
+
+//initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Express View engine setup
 
@@ -64,10 +76,7 @@ app.use('/', home);
 const auth = require('./routes/auth');
 app.use('/auth', auth);
 
-const confirm = require('./routes/confirm');
-app.use('/logincon', confirm);
-
 const personalPage = require('./routes/personal');
-app.use('/id', personalPage);
+app.use('/personal', personalPage);
 
 module.exports = app;
