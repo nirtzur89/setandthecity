@@ -16,7 +16,7 @@ const User            = require('./models/user');
 const passport        = require('passport');
 const bcrypt          = require('bcryptjs');
 const SpotifyStrategy = require('passport-spotify').Strategy;
-const Spotify         = require('spotify-web-api-js');
+const SpotifyApi         = require('spotify-web-api-node');
 
 //mongoose
 mongoose
