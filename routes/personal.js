@@ -10,7 +10,8 @@ const authCheck = (req,res,next) => {
 };
 
 router.get('/', authCheck ,(req, res, next) => {
-  res.send("WE ARE AT YOUR PERSONAL 20 U 4 - WELCOME " + req.user);
+  // res.send("WE ARE AT YOUR PERSONAL 20 U 4 - WELCOME " + req.user);
+  res.render('personal')
   
 });
 
