@@ -74,7 +74,18 @@ p:last-of-type
 .authButton {
   position: relative;
   text-decoration: none;
-  color: white;
+	color: white;
+	font-weight: bold;
+	background-color: #1db954;
+	font-size: 14px;
+	line-height: 1;
+	border-radius: 500px;
+	padding: 16px 48px 18px;
+	border-width: 0;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	white-space: normal;
+
 }
 
 /*header*/
