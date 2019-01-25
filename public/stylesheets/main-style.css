@@ -133,9 +133,8 @@ p:last-of-type
   margin-left: 0;
 }
 
-.newsfeed {
-  /* border-style: solid; */
-  /* border-color: yellow; */
+.newsfeed_header {
+	margin-left: 27%;
 }
 
 .newsfeed_row {
@@ -145,6 +144,8 @@ p:last-of-type
 .newsfeed_list_col
 {
 	z-index: 1;
+	margin-right: auto;
+	margin-left: auto;
 }
 .newsfeed_image
 {
