@@ -6,21 +6,22 @@ const UserSchema = new mongoose.Schema({
   email: String,
   token: String,
   spotifyId: String,
-  // followedArtists: [{
-  //   artistId: String,
-  //   artistName: String,
-  //   relatedArtists: [{
-  //     artistId: String,
-  //     artistName: String,
-  //     tracks: [{
-  //       trackId: String,
-  //       popularity: Number,
-  //       artistName: String,
-  //       trackName: String,
-  //       url: String,
-  //     }]
-  //   }]
-  // }],
+  followedArtistsCount: Number,
+  followedArtists: [{
+    artistId: String,
+    artistName: String,
+    relatedArtists: [{
+      artistId: String,
+      artistName: String,
+      tracks: [{
+        trackId: String,
+        popularity: Number,
+        artistName: String,
+        trackName: String,
+        url: String,
+      }]
+    }]
+  }],
 });
 
 

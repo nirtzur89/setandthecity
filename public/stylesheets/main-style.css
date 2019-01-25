@@ -71,7 +71,7 @@ p:last-of-type
 
 
 /* login via spotify button on home.hbs */
-.authButton {
+#authButton {
   position: relative;
   text-decoration: none;
 	color: white;

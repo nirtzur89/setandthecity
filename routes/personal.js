@@ -26,44 +26,40 @@ const authCheck = (req, res, next) => {
   }
 };
 
+//check if users already exists in our database
+
 //route
 router.get('/', authCheck, (req, res) => {
   //res.send("WE ARE AT YOUR PERSONAL 20 U 4 - WELCOME " + req.user.username);
   var userName = req.user.username;
   var id = req.user.spotifyId;
 
-  res.render('spotitest', { 
+  var followedArtists = [];
+  // req.user.followedArtists = spotifyApi.getFollowedArtists() 
+
+  // .then(function (data) {
+  //   // 'This user is following 1051 artists!'
+  //   console.log('This user is following ', data.body.artists, ' artists!');
+  // }, function (err) {
+  //   console.log('Something went wrong!', err);
+  // })
+
+  res.render('spotitest', {
     userName: userName,
-    id: id
+    id: id,
+    // followedArtists: followedArtists
   })
-  console.log(userName);
-
-  // const followedArtists = spotifyApi.getFollowedArtists(userName)
-  //   .then(function (data) {
-
-  //     for (let i = 0; i < followedArtists.length; i++) {
-  //       const relatedArtists = spotifyApi.getArtistRelatedArtists(followedArtists[i])
-  //         .then(function (data) {
-  //           for (let i = 0; i < relatedArtists.length; i++) {
-
-  //           }
-  //         })
-  //     }
-
-  //     console.log('This user is following ', data.body.artists, ' artists!');
-  //   }, function (err) {
-  //     console.log('Something went wrong!', err);
-    // });
-
-
-
-  //  spotifyApi.getUserPlaylists('yearsandyears')
-  //  .then(function(data) {
-  //    console.log('Retrieved playlists', data.body);
-  //  },function(err) {
-  //    console.log('Something went wrong!', err);
-  //  });
-
 });
+
+
+
+//  spotifyApi.getUserPlaylists('yearsandyears')
+//  .then(function(data) {
+//    console.log('Retrieved playlists', data.body);
+//  },function(err) {
+//    console.log('Something went wrong!', err);
+//  });
+
+// });
 
 module.exports = router;
