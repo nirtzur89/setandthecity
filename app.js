@@ -70,13 +70,23 @@ app.locals.title = '20-4-U';
 
 // random comment
 
+//Home
 const home = require('./routes/home');
 app.use('/', home);
+
+// const button = document.getElementById('authButton');
+// button.addEventListener('click', function(e) {
+//  console.log('button was clicked');
+// });
+
+//auth
 
 const auth = require('./routes/auth');
 app.use('/auth', auth);
 
 const personalPage = require('./routes/personal');
 app.use('/personal', personalPage);
+
+
 
 module.exports = app;

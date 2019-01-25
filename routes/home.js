@@ -22,4 +22,6 @@ router.get('/logincon', passport.authenticate('spotify'),(req,res) =>{
   res.redirect('/personal')
 });
 
+
+
 module.exports = router;
