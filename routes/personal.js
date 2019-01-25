@@ -10,12 +10,12 @@ const client_secret = '54708907189e407e8c5f6eb2328f9374';
 const client_secret2 = 'd6fd4f5a4e3b40a685f4dde2a6058099';
 
 var spotifyApi = new SpotifyWebApi({
-  clientId: client_id2,
-  clientSecret: client_secret2,
+  clientId: client_id,
+  clientSecret: client_secret,
   redirectUri: '/logincon'
 });
 
-spotifyApi.setAccessToken('BQCw-mQMftEzahCTs4gY8zpDx2V6ujVIde033Qmq9XzBM96lAmO7eRzkDiSb_pYG3YhPj8hoyM_eqlHirq9HrKCx6j3g0uJem3O3Ohuv1v-xswESGigsPqAUUB8O2amQ8vuvupX85iv6w2LOKTCxDGsiq5BvAQKQymra9SXAatnnvrpih3mQfJ6lIAFBOcOudHPCWmcDMrr3CtRg4GiAHf4G4rx_taKRAMbWzCiii3DxhfMvClp-ecKsi1z5NxIi067pzlTrJNgpIApybjj6Ir-XQffH5dvm4IL-yWU');
+spotifyApi.setAccessToken('BQCpCOFIfrtgbDw-WCuzmhosBnIGoKBOb-SslrwzSfo5MN934My48yhpcoT-MFI9M6y9l5Ku1JR2psAjkxl8Vhfwy-CMAWzncunqZdhw3wuTfbRY0LukRXldoTXkiMP509gYd85chjsjISF7Df7oVARdWNvTS9GD1zF8PeHrdHpcICD9VsWo3AIFqcuFRwWRWDMUatqEF3s2_aHhcu92et_Fb-LShnjp5QLL-zg5OhT5nxC3JfSPtoCRVCBy4MonJ1c48WQn73C0i3AoxpTCfZvR6ZElRihhpCjPQLM');
 
 //checking if user is authorized
 const authCheck = (req, res, next) => {
@@ -32,27 +32,28 @@ router.get('/', authCheck, (req, res) => {
   var userName = req.user.username;
   var id = req.user.spotifyId;
 
-  res.render('spotitest', {
+  res.render('spotitest', { 
     userName: userName,
     id: id
   })
+  console.log(userName);
 
-  const followedArtists = spotifyApi.getFollowedArtists(userName)
-    .then(function (data) {
-      
-      for (let i = 0; i < followedArtists.length; i++) {
-        const relatedArtists = spotifyApi.getArtistRelatedArtists(followedArtists[i])
-          .then(function (data) {
-            for (let i = 0; i < relatedArtists.length; i++) {
+  // const followedArtists = spotifyApi.getFollowedArtists(userName)
+  //   .then(function (data) {
 
-            }
-          })
-      }
+  //     for (let i = 0; i < followedArtists.length; i++) {
+  //       const relatedArtists = spotifyApi.getArtistRelatedArtists(followedArtists[i])
+  //         .then(function (data) {
+  //           for (let i = 0; i < relatedArtists.length; i++) {
 
-      console.log('This user is following ', data.body.artists, ' artists!');
-    }, function (err) {
-      console.log('Something went wrong!', err);
-    });
+  //           }
+  //         })
+  //     }
+
+  //     console.log('This user is following ', data.body.artists, ' artists!');
+  //   }, function (err) {
+  //     console.log('Something went wrong!', err);
+    // });
 
 
 
