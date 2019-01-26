@@ -20,6 +20,7 @@ var spotifyApi = new SpotifyWebApi({
   redirectUri: redirectUri
 });
 
+
 // Create the authorization URL
 var authorizeURL = spotifyApi.createAuthorizeURL(scopes, state);
 
@@ -63,6 +64,7 @@ spotifyApi.refreshAccessToken().then(
   }
 );
 
+
 //checking if user is authorized
 const authCheck = (req, res, next) => {
   if (!req.user) {
@@ -80,32 +82,10 @@ router.get('/', authCheck, (req, res) => {
   var userName = req.user.username;
   var id = req.user.spotifyId;
 
-  var followedArtists = [];
-  // req.user.followedArtists = spotifyApi.getFollowedArtists() 
-
-  // .then(function (data) {
-  //   // 'This user is following 1051 artists!'
-  //   console.log('This user is following ', data.body.artists, ' artists!');
-  // }, function (err) {
-  //   console.log('Something went wrong!', err);
-  // })
-
   res.render('spotitest', {
     userName: userName,
-    id: id,
-    // followedArtists: followedArtists
+    id: id
   })
 });
-
-
-
-//  spotifyApi.getUserPlaylists('yearsandyears')
-//  .then(function(data) {
-//    console.log('Retrieved playlists', data.body);
-//  },function(err) {
-//    console.log('Something went wrong!', err);
-//  });
-
-// });
 
 module.exports = router;

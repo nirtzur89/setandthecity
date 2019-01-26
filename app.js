@@ -81,7 +81,7 @@ app.use('/', home);
 
 //auth
 
-const auth = require('./routes/auth');
+const auth = require('./routes/spotify-auth');
 app.use('/auth', auth);
 
 const personalPage = require('./routes/personal');
