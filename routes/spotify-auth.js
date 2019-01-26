@@ -1,7 +1,10 @@
+const express = require('express');
+const router  = express.Router();
 const passport        = require('passport');
 const SpotifyStrategy = require('passport-spotify').Strategy;
 const mongoose        = require('mongoose');
 const User            = require('../models/user');
+const SpotifyWebApi = require('spotify-web-api-node');
 
 const client_id = 'a3676c8b791c49048c222a84f7fd770c';
 const client_id2 = 'daaf597517cb41bd84f0981584dbbc18';
@@ -48,7 +51,11 @@ passport.use(
           new User({
             username:  profile._json.display_name,
             email:     profile._json.email,
-            spotifyId: profile._json.id
+            spotifyId: profile._json.id,
+            country:   profile._json.country,
+            profile:   profile._json.profileUrl,
+            photo:     profile._json.photos,
+            //followedArtistsCount: profile._json. 
           }).save()
           .then((newUser) => {
             console.log('new user created' + newUser);
@@ -56,3 +63,5 @@ passport.use(
           })
         }})
       }));
+
+      module.exports = router;

@@ -15,7 +15,7 @@ var spotifyApi = new SpotifyWebApi({
   redirectUri: '/logincon'
 });
 
-spotifyApi.setAccessToken('BQCpCOFIfrtgbDw-WCuzmhosBnIGoKBOb-SslrwzSfo5MN934My48yhpcoT-MFI9M6y9l5Ku1JR2psAjkxl8Vhfwy-CMAWzncunqZdhw3wuTfbRY0LukRXldoTXkiMP509gYd85chjsjISF7Df7oVARdWNvTS9GD1zF8PeHrdHpcICD9VsWo3AIFqcuFRwWRWDMUatqEF3s2_aHhcu92et_Fb-LShnjp5QLL-zg5OhT5nxC3JfSPtoCRVCBy4MonJ1c48WQn73C0i3AoxpTCfZvR6ZElRihhpCjPQLM');
+spotifyApi.setAccessToken('BQDY6EZY4U3F_1QiEYVRGZrxWLqMLFSczXSYm9Xy5lCw');
 
 //checking if user is authorized
 const authCheck = (req, res, next) => {
@@ -34,32 +34,10 @@ router.get('/', authCheck, (req, res) => {
   var userName = req.user.username;
   var id = req.user.spotifyId;
 
-  var followedArtists = [];
-  // req.user.followedArtists = spotifyApi.getFollowedArtists() 
-
-  // .then(function (data) {
-  //   // 'This user is following 1051 artists!'
-  //   console.log('This user is following ', data.body.artists, ' artists!');
-  // }, function (err) {
-  //   console.log('Something went wrong!', err);
-  // })
-
   res.render('spotitest', {
     userName: userName,
-    id: id,
-    // followedArtists: followedArtists
+    id: id
   })
 });
-
-
-
-//  spotifyApi.getUserPlaylists('yearsandyears')
-//  .then(function(data) {
-//    console.log('Retrieved playlists', data.body);
-//  },function(err) {
-//    console.log('Something went wrong!', err);
-//  });
-
-// });
 
 module.exports = router;
