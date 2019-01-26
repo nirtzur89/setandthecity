@@ -33,9 +33,8 @@ passport.use(
       })
       .then((currentUser) => {
         if (currentUser) {
-          console.log('user ' + currentUser + ' already exists');
+          console.log('user already exists');
           done(null, currentUser);
-          console.log(profile);
         } else {
           new User({
               username: profile._json.display_name,
@@ -54,10 +53,6 @@ passport.use(
         }
       })
   }));
-
-  var scopes = ['user-read-private', 'user-read-email'],
-  state = 'some-state-of-my-choice';
-
 
 
 

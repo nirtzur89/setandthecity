@@ -9,7 +9,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/auth', passport.authenticate('spotify', {
-  scope: ['user-read-email','user-read-private'],
+  scope: ['user-read-email','user-read-private','user-library-modify','user-follow-read'],
   showDialog: true
 }),
 function(req, res) {
