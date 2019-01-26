@@ -38,13 +38,13 @@ router.get('/', authCheck, (req, res) => {
       console.log('USERuserUser', user)
       const artistlist = await spotifyApi.getFollowedArtists(user)
       .then(function (data) {
-        console.log('what', data.body.artists.items)
+        console.log('what', data.body.artists.items[0].name);
         res.render('spotitest', {
           userName: data.body,
           id: id
-        })
+        }); 
       })
-      console.log(artistlist);
+      console.log('ARTISTLISTARTISTLIST', artistlist);
     } catch (err) {
       console.log('Error12345', err.message);
     }
