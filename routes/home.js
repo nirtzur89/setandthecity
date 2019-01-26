@@ -17,7 +17,7 @@ function(req, res) {
   // function will not be called.
 });
 
-router.get('/logincon', passport.authenticate('spotify'),(req,res) =>{
+router.get('/logincon', passport.authenticate('spotify', { failureRedirect: '/' }),(req,res) =>{
   //res.send(req.user);
   res.redirect('/personal')
 });
