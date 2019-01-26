@@ -1,7 +1,6 @@
 require('dotenv').config();
 
 const bodyParser      = require('body-parser');
-const cookieParser    = require('cookie-parser');
 const express         = require('express');
 const favicon         = require('serve-favicon');
 const hbs             = require('express-handlebars');
@@ -39,7 +38,6 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(cookieSession({
   maxAge: 24*60*60*1000,
   keys:['awsomethree']
