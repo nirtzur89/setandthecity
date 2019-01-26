@@ -4,18 +4,64 @@ const SpotifyWebApi = require('spotify-web-api-node');
 
 const router = express.Router();
 
+
+var scopes = ['user-read-private', 'user-read-email'],
+  state = 'some-state-of-my-choice';
+
+
 const client_id = 'a3676c8b791c49048c222a84f7fd770c';
-const client_id2 = 'daaf597517cb41bd84f0981584dbbc18';
 const client_secret = '54708907189e407e8c5f6eb2328f9374';
-const client_secret2 = 'd6fd4f5a4e3b40a685f4dde2a6058099';
+const redirectUri = '/logincon';
+
 
 var spotifyApi = new SpotifyWebApi({
   clientId: client_id,
   clientSecret: client_secret,
-  redirectUri: '/logincon'
+  redirectUri: redirectUri
 });
 
-spotifyApi.setAccessToken('BQCpCOFIfrtgbDw-WCuzmhosBnIGoKBOb-SslrwzSfo5MN934My48yhpcoT-MFI9M6y9l5Ku1JR2psAjkxl8Vhfwy-CMAWzncunqZdhw3wuTfbRY0LukRXldoTXkiMP509gYd85chjsjISF7Df7oVARdWNvTS9GD1zF8PeHrdHpcICD9VsWo3AIFqcuFRwWRWDMUatqEF3s2_aHhcu92et_Fb-LShnjp5QLL-zg5OhT5nxC3JfSPtoCRVCBy4MonJ1c48WQn73C0i3AoxpTCfZvR6ZElRihhpCjPQLM');
+// Create the authorization URL
+var authorizeURL = spotifyApi.createAuthorizeURL(scopes, state);
+
+// https://accounts.spotify.com:443/authorize?client_id=5fe01282e44241328a84e7c5cc169165&response_type=code&redirect_uri=https://example.com/callback&scope=user-read-private%20user-read-email&state=some-state-of-my-choice
+console.log(authorizeURL);
+
+var credentials = {
+  clientId: 'someClientId',
+  clientSecret: 'someClientSecret',
+  redirectUri: '/logincon'
+};
+
+var spotifyApi = new SpotifyWebApi(credentials);
+
+// Retrieve an access token and a refresh token
+spotifyApi.authorizationCodeGrant(authorizeURL).then(
+  function (data) {
+    console.log('The token expires in ' + data.body['expires_in']);
+    console.log('The access token is ' + data.body['access_token']);
+    console.log('The refresh token is ' + data.body['refresh_token']);
+
+    // Set the access token on the API object to use it in later calls
+    spotifyApi.setAccessToken(data.body['access_token']);
+    spotifyApi.setRefreshToken(data.body['refresh_token']);
+  },
+  function (err) {
+    console.log('Something went wrong!', err);
+  }
+);
+
+// clientId, clientSecret and refreshToken has been set on the api object previous to this call.
+spotifyApi.refreshAccessToken().then(
+  function (data) {
+    console.log('The access token has been refreshed!');
+
+    // Save the access token so that it's used in future calls
+    spotifyApi.setAccessToken(data.body['access_token']);
+  },
+  function (err) {
+    console.log('Could not refresh access token', err);
+  }
+);
 
 //checking if user is authorized
 const authCheck = (req, res, next) => {
