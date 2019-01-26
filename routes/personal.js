@@ -30,17 +30,37 @@ router.get('/', authCheck, (req, res) => {
   var userName = req.user.username;
   var id = req.user.spotifyId;
 
-  console.log(req.user.spotifyAccessToken)
-  spotifyApi.setAccessToken(req.user.spotifyAccessToken)
+  spotifyApi.setAccessToken(req.user.spotifyAccessToken);
 
-  spotifyApi.getMe()
-  .then(function(data) {
-    console.log('what', data.body)
-    res.render('spotitest', {
-      userName: data.body,
-      id: id
-    })
-  }).catch((err) => { res.send(err)});
+  async function showFollowedArtists(id) {
+    try {
+      const user = await spotifyApi.getMe();
+      console.log('USERuserUser', user)
+      const artistlist = await spotifyApi.getFollowedArtists(user)
+      .then(function (data) {
+        console.log('what', data.body.artists.items)
+        res.render('spotitest', {
+          userName: data.body,
+          id: id
+        })
+      })
+      console.log(artistlist);
+    } catch (err) {
+      console.log('Error12345', err.message);
+    }
+  };
+
+  showFollowedArtists()
+
+  // spotifyApi.getMe()
+
+  // spotifyApi.getFollowedArtists()
+
+
+  // console.log(req.user.spotifyAccessToken)
+
+
+
 
 
 });
