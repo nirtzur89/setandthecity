@@ -47,7 +47,7 @@
 //   getFollowedArtists.then(function() {
 //       res.render('spotitest', {
 //         userName: userName,
-//         followedArtists: getFollowedArtists,
+//         followedArtists: getFollowedArtists.,
 //         id: id
 //       })
 //     })
