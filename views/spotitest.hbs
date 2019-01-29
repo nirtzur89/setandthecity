@@ -8,4 +8,14 @@
 
 <p>your id is -{{id}}</p>
 
-<p>you are following - {{followedArtists}}</p>
+<p>you are following - 
+      <ul>{{#each artistlist}}
+       <li>{{this.name}}</li> 
+    {{/each}}</ul></p>
+
+<p>artists you might like - 
+      <ul>{{#each relatedArtists}}
+       {{#each this}}
+       <li>{{this}}</li>
+       {{/each}} 
+    {{/each}}</ul></p>

@@ -32,24 +32,57 @@ router.get('/', authCheck, (req, res) => {
 
   spotifyApi.setAccessToken(req.user.spotifyAccessToken);
 
-  async function showFollowedArtists(id) {
-    try {
-      const user = await spotifyApi.getMe();
-      console.log('USERuserUser', user)
-      const artistlist = await spotifyApi.getFollowedArtists(user)
+  function showFollowedArtists() {
+    spotifyApi.getFollowedArtists(id)
       .then(function (data) {
-        console.log('what', data.body.artists.items)
-        res.render('spotitest', {
-          userName: data.body,
-          id: id
+        //console.log('what', data.body.artists.items)
+        const following = data.body.artists.items
+
+        let relatedArtists = []
+        const reqs = following.map(function (item) {
+          return spotifyApi.getArtistRelatedArtists(item.id)
+            .then(function (data) {
+              //console.log(data.body.artists)
+              let relatedArtistArray = data.body.artists.map(x => x.name)
+              relatedArtists.push(relatedArtistArray)
+
+            }).then(function () {
+              console.log('relateddddddddddddddddddddddddd', relatedArtists)
+            })
+          // .then(function(){
+          //   let relatedTopFive = []
+            // relatedArtists[1].forEach(function(id){
+            //   spotifyApi.getArtistTopTracks(id, 'DE')
+            //     .then(function(data) {
+            //     console.log(data.body.name);
+            //       }, function(err) {
+            //     console.log('Something went wrong!', err);
+            //     });
+            //   })
+          // })
         })
+
+        Promise.all(reqs).then(() => {
+
+          res.render('spotitest', {
+            userName: userName,
+            id: id,
+            artistlist: following,
+            relatedArtists: relatedArtists
+          })
+        })
+
+
+
+
       })
-      console.log(artistlist);
-    } catch (err) {
-      console.log('Error12345', err.message);
-    }
   };
 
+
+  //var array1 = ['a', 'b', 'c'];
+  // array1.forEach(function(element) {
+  //   console.log(element);
+  // });
   showFollowedArtists()
 
   // spotifyApi.getMe()
