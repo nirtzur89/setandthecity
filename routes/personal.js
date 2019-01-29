@@ -29,8 +29,10 @@ router.get('/', authCheck, (req, res) => {
   //res.send("WE ARE AT YOUR PERSONAL 20 U 4 - WELCOME " + req.user.username);
   var userName = req.user.username;
   var id = req.user.spotifyId;
+  var artistlist = req.user.artistlist;
 
   spotifyApi.setAccessToken(req.user.spotifyAccessToken);
+
 
   function showFollowedArtists() {
     spotifyApi.getFollowedArtists(id)
@@ -76,7 +78,14 @@ router.get('/', authCheck, (req, res) => {
 
 
       })
+
   };
+  
+  res.render('spotitest', {
+    userName: userName,
+    id: id,
+    // artistlist: artistlist
+  })
 
 
   //var array1 = ['a', 'b', 'c'];
@@ -84,17 +93,7 @@ router.get('/', authCheck, (req, res) => {
   //   console.log(element);
   // });
   showFollowedArtists()
-
-  // spotifyApi.getMe()
-
-  // spotifyApi.getFollowedArtists()
-
-
-  // console.log(req.user.spotifyAccessToken)
-
-
-
-
+  console.log('probably UNDEFINED', artistlist);
 
 });
 
