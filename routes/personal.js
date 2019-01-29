@@ -29,39 +29,34 @@ router.get('/', authCheck, (req, res) => {
   //res.send("WE ARE AT YOUR PERSONAL 20 U 4 - WELCOME " + req.user.username);
   var userName = req.user.username;
   var id = req.user.spotifyId;
+  var artistlist = req.user.artistlist;
 
   spotifyApi.setAccessToken(req.user.spotifyAccessToken);
 
-  async function showFollowedArtists(id) {
+
+
+  async function showFollowedArtists() {
     try {
       const user = await spotifyApi.getMe();
-      console.log('USERuserUser', user)
       const artistlist = await spotifyApi.getFollowedArtists(user)
-      .then(function (data) {
-        console.log('what', data.body.artists.items)
-        res.render('spotitest', {
-          userName: data.body,
-          id: id
-        })
-      })
-      console.log(artistlist);
+      console.log('what', artistlist.body.artists.items[0].name);
+      artistlist.body.artists.items = artistlist;
+      return artistlist;
     } catch (err) {
       console.log('Error12345', err.message);
     }
+
+    
   };
+  
+  res.render('spotitest', {
+    userName: userName,
+    id: id,
+    // artistlist: artistlist
+  })
 
   showFollowedArtists()
-
-  // spotifyApi.getMe()
-
-  // spotifyApi.getFollowedArtists()
-
-
-  // console.log(req.user.spotifyAccessToken)
-
-
-
-
+  console.log('probably UNDEFINED', artistlist);
 
 });
 
