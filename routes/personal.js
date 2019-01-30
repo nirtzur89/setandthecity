@@ -38,10 +38,10 @@ router.get('/', authCheck, (req, res) => {
     spotifyApi.getFollowedArtists(id)
       .then(function (data) {
         //console.log('what', data.body.artists.items)
-        const following = data.body.artists.items
+        let randomArtistList1 = data.body.artists.items.sort(() => .5 - Math.random()).slice(0,5);
 
         let relatedArtists = []
-        const reqs = following.map(function (item) {
+        const reqs = randomArtistList1.map(function (item) {
           return spotifyApi.getArtistRelatedArtists(item.id)
             .then(function (data) {
               //console.log(data.body.artists)
@@ -69,7 +69,7 @@ router.get('/', authCheck, (req, res) => {
           res.render('spotitest', {
             userName: userName,
             id: id,
-            artistlist: following,
+            artistlist: randomArtistList1,
             relatedArtists: relatedArtists
           })
         })
@@ -81,19 +81,19 @@ router.get('/', authCheck, (req, res) => {
 
   };
   
-  res.render('spotitest', {
-    userName: userName,
-    id: id,
-    // artistlist: artistlist
-  })
+  // res.render('spotitest', {
+  //   userName: userName,
+  //   id: id,
+  //   // artistlist: artistlist
+  // })
 
 
   //var array1 = ['a', 'b', 'c'];
   // array1.forEach(function(element) {
   //   console.log(element);
-  // });
+  // // });
   showFollowedArtists()
-  console.log('probably UNDEFINED', artistlist);
+  // console.log('probably UNDEFINED', artistlist);
 
 });
 
