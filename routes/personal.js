@@ -46,7 +46,7 @@ router.get('/', authCheck, (req, res) => {
           return spotifyApi.getArtistRelatedArtists(item.id)
             .then(function (data) {
               let randomRelatedArtists = data.body.artists.sort(() => .3 - Math.random()).slice(0,3);
-              console.log(randomRelatedArtists)
+              console.log('line 49',randomRelatedArtists)
               let relatedArtistIdArray = randomRelatedArtists.map(x => x.id)
               relatedArtistsId.push(relatedArtistIdArray)
               let relatedArtistArray = randomRelatedArtists.map(x => x.name)
@@ -55,13 +55,15 @@ router.get('/', authCheck, (req, res) => {
             })
               .then(function(data){
                 var mergedArtistsIds = [].concat.apply([], data);
-                console.log('daaaaaaattttttaaaaaaa',mergedArtistsIds)
-                .then(function(mergedArtistsIds){
-                    let allTopTracks = mergedArtistsIds.forEach(function(id){
+                console.log('line 58',mergedArtistsIds)
+                    let allTopTracks=[]
+                      mergedArtistsIds.forEach(function(id){
                       spotifyApi.getArtistTopTracks(id, 'DE')
-                      console.log('alltops',allTopTracks)
-                    }).then(function(data) {
-                      console.log('alltops', data)
+                      .then(function(data){
+                        allTopTracks.push(data);
+                      })
+                    })
+                      console.log('alltops', allTopTracks)
                       // let randomTop = []
                       // console.log('mergedrelatedddddddddddtoptracks', data)
                       // //mergedTop.forEach(function(el))
@@ -70,13 +72,9 @@ router.get('/', authCheck, (req, res) => {
                       //   console.log('random top',randomTop)
                       // let randomTopArray = randomTop.map(x => x.name)
                       //   relatedTop.push(randomTopArray)
-                        console.log(data);
-                    }, function(err) {
+                    }), function(err) {
                       console.log('Something went wrong!', err);
-                    });
-                });
-            });
-          });
+          }});
 
         Promise.all(reqs).then(() => {
           res.render('spotitest', {
