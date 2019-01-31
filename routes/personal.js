@@ -30,6 +30,14 @@ router.get('/', authCheck, (req, res) => {
   var userName = req.user.username;
   var id = req.user.spotifyId;
   var artistlist = req.user.artistlist;
+  const getTopTracks = (id => {
+    spotifyApi
+      .getArtistTopTracks(id, 'DE')
+      .then(dataTracks => {
+        let topTracksList = dataTracks;
+        return topTracksList
+      })
+  })
 
   spotifyApi.setAccessToken(req.user.spotifyAccessToken);
 
@@ -38,45 +46,59 @@ router.get('/', authCheck, (req, res) => {
     spotifyApi.getFollowedArtists(id)
       .then(function (data) {
         //console.log('what', data.body.artists.items)
-        let randomArtistList1 = data.body.artists.items.sort(() => .5 - Math.random()).slice(0,5);
+        let randomArtistList1 = data.body.artists.items.sort(() => .5 - Math.random()).slice(0, 5);
 
         let relatedArtists = []
         let relatedArtistsId = []
+        let allTopTracks = []
+
         const reqs = randomArtistList1.map(function (item) {
-          return spotifyApi.getArtistRelatedArtists(item.id)
+          //let trackRequestPromises = []
+          spotifyApi.getArtistRelatedArtists(item.id)
             .then(function (data) {
-              let randomRelatedArtists = data.body.artists.sort(() => .3 - Math.random()).slice(0,3);
-              console.log('line 49',randomRelatedArtists)
+              let randomRelatedArtists = data.body.artists.sort(() => .3 - Math.random()).slice(0, 3);
+              console.log('line 49', randomRelatedArtists)
               let relatedArtistIdArray = randomRelatedArtists.map(x => x.id)
               relatedArtistsId.push(relatedArtistIdArray)
               let relatedArtistArray = randomRelatedArtists.map(x => x.name)
               relatedArtists.push(relatedArtistArray)
-              return relatedArtistsId
-            })
-              .then(function(data){
-                var mergedArtistsIds = [].concat.apply([], data);
-                console.log('line 58',mergedArtistsIds)
-                    let allTopTracks=[]
-                      mergedArtistsIds.forEach(function(id){
-                      spotifyApi.getArtistTopTracks(id, 'DE')
-                      .then(function(data){
-                        allTopTracks.push(data);
-                      })
-                    })
-                      console.log('alltops', allTopTracks)
-                      // let randomTop = []
-                      // console.log('mergedrelatedddddddddddtoptracks', data)
-                      // //mergedTop.forEach(function(el))
-                      // let allRelated = mergedTop.body.tracks
-                      // let randomTop = allRelated.sort(() => .2 - Math.random()).slice(0,3);
-                      //   console.log('random top',randomTop)
-                      // let randomTopArray = randomTop.map(x => x.name)
-                      //   relatedTop.push(randomTopArray)
-                    }), function(err) {
-                      console.log('Something went wrong!', err);
-          }});
+
+              var mergedArtistsIds = [].concat.apply([], relatedArtistsId);
+              console.log('line 66', mergedArtistsIds)
+
+
+
+              let trackRequestPromises = mergedArtistsIds.map(function (id) {
+                let promise = spotifyApi.getArtistTopTracks(id, 'DE').then((track) => {
+                  console.log(track)
+                  allTopTracks.push(track)
+                })
+                return promise
+                //trackRequestPromises.push(promise)
+              })
+              return Promise.all(trackRequestPromises)
+
+
+
+
+
+              // let randomTop = []
+              // console.log('mergedrelatedddddddddddtoptracks', data)
+              // //mergedTop.forEach(function(el))
+              // let allRelated = mergedTop.body.tracks
+              // let randomTop = allRelated.sort(() => .2 - Math.random()).slice(0,3);
+              //   console.log('random top',randomTop)
+              // let randomTopArray = randomTop.map(x => x.name)
+              //   relatedTop.push(randomTopArray)
+            }), function (err) {
+              console.log('Something went wrong!', err);
+            }
+           
+        });
 
         Promise.all(reqs).then(() => {
+          console.log("Test")
+          //res.send(allTopTracks)
           res.render('spotitest', {
             userName: userName,
             id: id,
@@ -92,7 +114,7 @@ router.get('/', authCheck, (req, res) => {
       })
 
   };
-  
+
   // res.render('spotitest', {
   //   userName: userName,
   //   id: id,
