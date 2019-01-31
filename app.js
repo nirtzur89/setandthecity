@@ -66,7 +66,9 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 // default value for title local
 app.locals.title = '20-4-U';
 
-// random comment
+// require public folder
+app.use(express.static('public'));
+app.use('/fonts', express.static('fonts')); 
 
 //Home
 const home = require('./routes/home');
