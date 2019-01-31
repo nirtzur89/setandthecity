@@ -41,36 +41,50 @@ router.get('/', authCheck, (req, res) => {
         let randomArtistList1 = data.body.artists.items.sort(() => .5 - Math.random()).slice(0,5);
 
         let relatedArtists = []
+        let relatedArtistsId = []
         const reqs = randomArtistList1.map(function (item) {
           return spotifyApi.getArtistRelatedArtists(item.id)
             .then(function (data) {
-              //console.log(data.body.artists)
-              let relatedArtistArray = data.body.artists.map(x => x.name)
+              let randomRelatedArtists = data.body.artists.sort(() => .3 - Math.random()).slice(0,3);
+              console.log(randomRelatedArtists)
+              let relatedArtistIdArray = randomRelatedArtists.map(x => x.id)
+              relatedArtistsId.push(relatedArtistIdArray)
+              let relatedArtistArray = randomRelatedArtists.map(x => x.name)
               relatedArtists.push(relatedArtistArray)
-
-            }).then(function () {
-              console.log('relateddddddddddddddddddddddddd', relatedArtists)
+              return relatedArtistsId
             })
-          // .then(function(){
-          //   let relatedTopFive = []
-            // relatedArtists[1].forEach(function(id){
-            //   spotifyApi.getArtistTopTracks(id, 'DE')
-            //     .then(function(data) {
-            //     console.log(data.body.name);
-            //       }, function(err) {
-            //     console.log('Something went wrong!', err);
-            //     });
-            //   })
-          // })
-        })
+              .then(function(data){
+                var mergedArtistsIds = [].concat.apply([], data);
+                console.log('daaaaaaattttttaaaaaaa',mergedArtistsIds)
+                .then(function(mergedArtistsIds){
+                    let allTopTracks = mergedArtistsIds.forEach(function(id){
+                      spotifyApi.getArtistTopTracks(id, 'DE')
+                      console.log('alltops',allTopTracks)
+                    }).then(function(data) {
+                      console.log('alltops', data)
+                      // let randomTop = []
+                      // console.log('mergedrelatedddddddddddtoptracks', data)
+                      // //mergedTop.forEach(function(el))
+                      // let allRelated = mergedTop.body.tracks
+                      // let randomTop = allRelated.sort(() => .2 - Math.random()).slice(0,3);
+                      //   console.log('random top',randomTop)
+                      // let randomTopArray = randomTop.map(x => x.name)
+                      //   relatedTop.push(randomTopArray)
+                        console.log(data);
+                    }, function(err) {
+                      console.log('Something went wrong!', err);
+                    });
+                });
+            });
+          });
 
         Promise.all(reqs).then(() => {
-
           res.render('spotitest', {
             userName: userName,
             id: id,
             artistlist: randomArtistList1,
             relatedArtists: relatedArtists
+            // relatedTop: randomTop
           })
         })
 
