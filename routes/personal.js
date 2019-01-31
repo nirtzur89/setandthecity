@@ -98,14 +98,14 @@ router.get('/', authCheck, (req, res) => {
 
         Promise.all(reqs).then(() => {
           console.log("Test")
-          res.send(allTopTracks)
-          // res.render('spotitest', {
-          //   userName: userName,
-          //   id: id,
-          //   artistlist: randomArtistList1,
-          //   relatedArtists: relatedArtists
-          //   // relatedTop: randomTop
-          // })
+          //res.send(allTopTracks)
+          res.render('spotitest', {
+            userName: userName,
+            id: id,
+            artistlist: randomArtistList1,
+            relatedArtists: relatedArtists
+            // relatedTop: randomTop
+          })
         })
 
 
