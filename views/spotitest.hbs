@@ -1,23 +1,41 @@
-<h1>welcome to your personal page - {{userName}}</h1>
+<div class="bodyPers w-100 d-flex bd-highlight mb-3 justify-content-start align-items-around flex-column">
+  <div class="headerPersonal align-items-start flex-row flex-wrap">
+    <div class="row">
+      <div class="welcome">
+        <h1>welcome to your personal page - {{userName}}</h1>
+      </div>
+      <div class="userId text-center">
+        <p>your id is -{{id}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="mainPersonal align-items-stretch justify-content-around flex-row w-100 text-center">
+    <div class="row">
+      <div class="persInfo col-3">
+        <p class="font-weight-bold">you are following -
+          <ul>{{#each artistlist}}
+            <li>{{this.name}}</li>
+            {{/each}}</ul>
+        </p>
+      </div>
+      <div class="newsfeed col-6 font-weight-bold text-center">NEWSFEED</div>
+      <div class="artistInfo col-3 text-center">
+        <p class="font-weight-bold">artists you might like -
+          <ul>{{#each relatedArtists}}
+            {{#each this}}
+            <li>{{this}}</li>
+            {{/each}}
+            {{/each}}</ul>
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
 
 {{!-- <ul>
   {{#each followedArtists}}
   <li>{{this}}</li>
   {{/each}}
 </ul> --}}
-
-<p>your id is -{{id}}</p>
-
-
-<p>you are following - 
-      <ul>{{#each artistlist}}
-       <li>{{this.name}}</li> 
-    {{/each}}</ul></p>
-
-<p>artists you might like - 
-      <ul>{{#each relatedArtists}}
-       {{#each this}}
-       <li>{{this}}</li>
-       {{/each}} 
-    {{/each}}</ul></p>
-

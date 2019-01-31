@@ -72,7 +72,7 @@ p {
 	font-size: 14px;
 	line-height: 2.18;
 	font-weight: 400;
-	color: #FFFFFF;
+	color:black;
 	-webkit-font-smoothing: antialiased;
 	-webkit-text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
 	text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
@@ -94,6 +94,7 @@ p:last-of-type {
 	margin-bottom: 0;
 }
 
+.mainPersonal,
 .superContainer {
 	width: 100vw;
 	/* border-style: dotted; */
@@ -156,6 +157,12 @@ p:last-of-type {
 	/* border-color: blue; */
 	margin-top: 20px;
 	margin-bottom: 20px;
+}
+
+.mainPersonal {
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 40px;
 }
 
 /* NewsFeed */
