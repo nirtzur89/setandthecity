@@ -28,7 +28,7 @@ header,
 }
 
 #intro {
-	/* background: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full%20page/img%20%283%29.jpg")no-repeat center center fixed; */
+	background: url("../images/headphones.png")no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -36,11 +36,11 @@ header,
 }
 
 .header_content {
-	font-family: "ProximaNova_thin", Fallback, sans-serif;
+	color: white;
+	font-family: "ProximaNova_altbold", Fallback, sans-serif;
 }
 
 * {
-	color: black;
 	margin: 0;
 	padding: 0;
 	-webkit-font-smoothing: antialiased;
