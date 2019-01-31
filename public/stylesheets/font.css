@@ -1,3 +1,5 @@
 body {
-  font-family: 'Proxima Nova', Georgia, sans-serif;
+  font-family: 'ProximaNova', Georgia, sans-serif;
+  src: url("/fonts/proxima-nova-web-fonts-master/fonts/proximafonts.css");
 }
+
