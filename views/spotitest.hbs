@@ -9,17 +9,33 @@
       </div>
     </div>
   </div>
-  <div class="mainPersonal align-items-stretch justify-content-around flex-row w-100 text-center">
+  <div class="mainPersonal container-fluid align-items-stretch justify-content-around flex-wrap w-100 text-center">
     <div class="row">
-      <div class="persInfo col-3">
-        <p class="font-weight-bold">you are following -
-          <ul>{{#each artistlist}}
-            <li>{{this.name}}</li>
+      <div class="persInfo order-xs-2 col-xs-6 col-md-3">
+        <p class="font-weight-bold">you are following -</p>
+
+        <div class="artistList">
+          <ul>{{#each artistImage}}
+            <li>
+              <div class="artistPicture">
+                <img id="artistIMG" src="{{this.[0].url}}">
+              </div>
+            </li>
+            {{/each}}
+          </ul>
+        </div>
+        {{!-- <li>{{this.name}}</li> --}}
+
+      </div>
+      <div class="newsfeed order-xs-1 col-xs-12 col-md-6 font-weight-bold text-center">NEWSFEED
+        <p class="tracks">
+          <ul>{{#each allTopTracks}}
+            <li>{{this.body}}</li>
             {{/each}}</ul>
         </p>
+
       </div>
-      <div class="newsfeed col-6 font-weight-bold text-center">NEWSFEED</div>
-      <div class="artistInfo col-3 text-center">
+      <div class="artistInfo col-xs-6 col-md-3 text-center">
         <p class="font-weight-bold">artists you might like -
           <ul>{{#each relatedArtists}}
             {{#each this}}
