@@ -20,12 +20,19 @@
 
 /* general stuff */
 
+.regularFont {
+	font-family: "ProximaNova_regular";
+	color: white;
+	/* line-height: 120%; */
+	font-size: large;
+}
+
 html,
 body,
 header,
 #intro {
 	width: 100%;
-	background-color:  #1d1d1b;
+	background-color: #1d1d1b;
 }
 
 #intro {
@@ -77,7 +84,7 @@ p {
 	font-size: 14px;
 	line-height: 2.18;
 	font-weight: 400;
-	color:black;
+	color: black;
 	-webkit-font-smoothing: antialiased;
 	-webkit-text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
 	text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
@@ -102,13 +109,35 @@ p:last-of-type {
 .mainPersonal,
 .superContainer {
 	width: 100vw;
-	/* border-style: dotted; */
-	/* border-color: #ffa07f; */
+}
 
+.welcome {
+	font-family: "ProximaNova_altbold";
+	color: #8dc686;
 }
 
 
 /* login via spotify button on home.hbs */
+#refreshButton {
+	position: center;
+	margin-top: 60px;
+	bottom: 120px;
+	right: 20px;
+	width: 300px;
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+	background-color: #8dc686;
+	font-size: 14px;
+	line-height: 1;
+	border-radius: 500px;
+	padding: 16px 48px 18px;
+	border-width: 1;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	white-space: normal;
+}
+
 #authButton {
 	position: fixed;
 	bottom: 120px;
@@ -117,7 +146,7 @@ p:last-of-type {
 	text-decoration: none;
 	color: white;
 	font-weight: bold;
-	background-color: #1db954;
+	background-color: #1d1d1b;
 	font-size: 14px;
 	line-height: 1;
 	border-radius: 500px;
@@ -168,10 +197,17 @@ p:last-of-type {
 	display: inline-block;
 }
 
+.artistList,
+.artistInfo {
+	font-family: "ProximaNova_thin";
+	color: white;
+}
+
 #artistIMG {
 	background-size: cover;
 	width: 64px;
 	height: 64px;
+	margin-bottom: 10px;
 }
 
 .mainPersonal {
@@ -181,50 +217,164 @@ p:last-of-type {
 }
 
 /* NewsFeed */
-.container {
-	margin-left: 0;
+.newsfeed_container {
+	width: 100%;
+	height: 100%;
 }
 
-.newsfeed_header {
-	margin-left: 27%;
+#newsfeedList {
+	width: 100%;
+	border: solid 1px #d3d3d3;
+	background:  #1d1d1b;
 }
 
-.newsfeed_row {
-	align-content: center;
+/* .newsfeed_header{
+
 }
 
-.newsfeed_list_col {
-	z-index: 1;
-	margin-right: auto;
-	margin-left: auto;
+ */
+
+.jp-playlist {
+	background: #1d1d1b;
 }
 
-.newsfeed_image {
-	left: -98px;
-	width: calc(100% + 252px);
+.jp-playlist ul {
+	/*padding-left: 55px;*/
+	background: #1d1d1b;
 }
 
-.newsfeed_image img {
-	max-width: 100%;
+.jp-playlist li {
+	position: relative;
+	height: 20px;
+	border-bottom: none;
+	padding-left: 55px;
+	background: #1d1d1b;
 }
 
-.newsfeed_image .image_overlay {
-	z-index: 0;
+.jp-playlist li::before,
+#newsfeedList.jp-state-playing .jp-playlist li.jp-playlist-current::before {
+	display: block;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: #5c5c5c;
+	visibility: hidden;
+	opacity: 0;
+	content: '';
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
 }
 
-.newsfeed_list_container {
-	width: calc(100% + 13px);
+.jp-playlist li:hover::before,
+#newsfeedList.jp-state-playing .jp-playlist li.jp-playlist-current::before {
+	opacity: 1;
+	visibility: visible;
+}
+
+.jp-playlist li>div {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	flex-direction: row;
+	justify-content: start;
+	align-items: center;
+	padding-left: 40px;
+	padding-right: 40px;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+
+.jp-playlist li>div::before {
+	display: block;
+	position: absolute;
+	left: 0;
 	top: 50%;
 	-webkit-transform: translateY(-50%);
 	-moz-transform: translateY(-50%);
 	-ms-transform: translateY(-50%);
 	-o-transform: translateY(-50%);
 	transform: translateY(-50%);
+	font-family: "ProximaNova_regular";
+	color: rgba(255, 255, 255, 0.5);
 }
+
+/* .jp-playlist li:not(:last-child) {
+	margin-bottom: 14px;
+} */
+
+#newsfeedList.jp-state-playing .jp-playlist li.jp-playlist-current>div::before {
+	color: #FFFFFF;
+}
+
+#newsfeedList.jp-state-playing .jp-playlist li.jp-playlist-current a,
+#newsfeedList_1.jp-state-playing .jp-playlist li.jp-playlist-current>div .song_duration {
+	color: #FFFFFF !important;
+}
+
+.jp-play {
+	position: relative;
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	background: #8dc686;
+	border: none;
+	cursor: pointer;
+	text-align: center;
+	outline: none !important;
+}
+
+/* play button with play icon */
+.jp-play::after {
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	font-family:  "FontAwesome";
+	font-size: 20px;
+	color: #FFFFFF;
+	content: '\f04b';
+}
+
+/* pause icon inside of play button */
+.jp-state-playing .jp-play::after {
+	content: '\f04c';
+}
+
+.jp-play:active {
+	width: 46px;
+	height: 46px;
+}
+
+.jp-play-bar {
+	height: 9px;
+	background: #5f5f5f;
+}
+
+.newsfeed_header {
+	margin-left: 50%;
+}
+
+
+/* .newsfeed_list_container {
+} */
 
 .newsfeed_list li {
 	width: 100%;
-	height: 81px;
+	height: 50px;
 	background: #333232;
 	padding-left: 11px;
 	padding-right: 37px;
@@ -239,46 +389,6 @@ p:last-of-type {
 .newsfeed_list li:not(:last-of-type) {
 	margin-bottom: 5px;
 }
-
-.newsfeed_date {
-	width: 78px;
-	height: 60px;
-	background: #de4f32;
-	line-height: 60px;
-	text-align: center;
-	margin-right: 23px;
-}
-
-.newsfeed_info {
-	width: 100%;
-	height: 100%;
-	padding-right: 23px;
-}
-
-.newsfeed_name {
-	width: 50%;
-	margin-right: 23px;
-}
-
-.newsfeed_location {
-	width: calc(50% - 23px);
-	margin-left: 23px;
-}
-
-.newsfeed_shop {
-	width: 120px;
-	height: 35px;
-	background: #000000;
-}
-
-.newsfeed_shop a {
-	display: block;
-	width: 100%;
-	height: 100%;
-	line-height: 35px;
-	text-align: center;
-}
-
 
 /*logout*/
 .logout {

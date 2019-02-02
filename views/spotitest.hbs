@@ -2,23 +2,20 @@
   <div class="headerPersonal align-items-start flex-row flex-wrap">
     <div class="row">
       <div class="welcome">
-        <h1>welcome to your personal page - {{userName}}</h1>
-      </div>
-      <div class="userId text-center">
-        <p>your id is -{{id}}</p>
+        <h1>Let's boogie</h1>
       </div>
     </div>
   </div>
-  <div class="mainPersonal container-fluid align-items-stretch justify-content-around flex-wrap w-100 text-center">
+  <div class="mainPersonal container-fluid flex-row align-items-stretch justify-content-around flex-wrap w-100 text-center">
     <div class="row">
       <div class="persInfo order-xs-2 col-xs-6 col-md-3">
-        <p class="font-weight-bold">you are following -</p>
+        <p class="regularFont font-weight-bold">YOU ARE FOLLOWING</p>
 
         <div class="artistList">
           <ul>{{#each artistImage}}
             <li>
               <div class="artistPicture">
-                <img id="artistIMG" src="{{this.[0].url}}">
+                <img id="artistIMG" class="img-circle" src="{{this.[0].url}}">
               </div>
             </li>
             {{/each}}
@@ -27,27 +24,62 @@
         {{!-- <li>{{this.name}}</li> --}}
 
       </div>
-      <div class="newsfeed order-xs-1 col-xs-12 col-md-6 font-weight-bold text-center">NEWSFEED
-        <p class="tracks">
-          <ul>{{#each allTopTracks}}
-            <li>{{this.body}}</li>
-            {{/each}}</ul>
-        </p>
 
-      </div>
-      <div class="artistInfo col-xs-6 col-md-3 text-center">
-        <p class="font-weight-bold">artists you might like -
-          <ul>{{#each relatedArtists}}
-            {{#each this}}
-            <li>{{this}}</li>
-            {{/each}}
-            {{/each}}</ul>
-        </p>
-      </div>
+
+      {{!-- <div class="newsfeed_container order-xs-1 col-xs-12 col-md-6 font-weight-bold d-flex flex-column align-items-start justify-content-center"> --}}
+        {{!-- newsfeed Header --}}
+
+        <div class="newsfeed_header regularFont ">NEWSFEED</div>
+        <div id="newsfeedList" class="newsfeed_list order-xs-1 col-xs-12 col-md-6 font-weight-bold flex-column align-items-start justify-content-center" role="application" aria-label="media player">
+          <div class="jp-type-playlist">
+            <div class="jp-playlist">
+              {{!-- <ul>{{#each allTopTracks}}
+                <li>{{this.body}}</li>
+                {{/each}}</ul> --}}
+              <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+              </ul>
+            </div>
+
+            <div class="jp-controls-holder ml-auto">
+              <button class="jp-play" tabindex="0"></button>
+            </div>
+            <div class="jp-play-bar"></div>
+
+            <div class="jp-progress">
+              <div class="jp-seek-bar">
+                <div class="jp-play-bar"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      {{!-- </div> --}}
+
+    </div>
+    <div class="artistInfo col-xs-6 col-md-3 text-center">
+      <p class="regularFont font-weight-bold">ARTISTS YOU MIGHT LIKE </p>
+      <ul>{{#each relatedArtists}}
+        {{#each this}}
+        <li>{{this}}</li>
+        {{/each}}
+        {{/each}}</ul>
     </div>
   </div>
 
+
 </div>
+<a href="/auth"><button type="button" id="refreshButton">DISCOVER MORE</button></a>
+</div>
+
+</div>
+
+</div>
+
 
 
 {{!-- <ul>
