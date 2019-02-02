@@ -24,11 +24,13 @@ router.get('/', authCheck, (req, res) => {
   var userName = req.user.username;
   var id = req.user.spotifyId;
   var artistlist = req.user.artistlist;
+
   spotifyApi.setAccessToken(req.user.spotifyAccessToken);
   let randomArtistList1 = []
   let relatedArtists = []
   let allTopTracks = []
   let randomImg = []
+  
   spotifyApi.getFollowedArtists(id)
     .then(function (data) {
       //console.log('what', data.body.artists.items)
@@ -57,14 +59,11 @@ router.get('/', authCheck, (req, res) => {
       }))
     }).then((dataArr) => {
 
-      let selectedTop = Math.floor(Math.random() * Math.floor(9));
+
       dataArr.forEach((artist) => {
-        if (artist.body.tracks[selectedTop].name !== undefined) {
-          console.log('track', artist.body.tracks[selectedTop].name)
-          allTopTracks.push(artist.body.tracks[selectedTop].name)
-        } else {
-          allTopTracks.push(artist.body.tracks[0].name)
-        }
+        let selectedTop = Math.floor(Math.random() * artist.body.tracks.length);
+        console.log('track', artist.body.tracks[selectedTop].name)
+        allTopTracks.push(artist.body.tracks[selectedTop].name)
       })
       res.render('spotitest', {
         userName: userName,
