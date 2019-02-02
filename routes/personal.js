@@ -51,6 +51,7 @@ router.get('/', authCheck, (req, res) => {
         let relatedArtists = []
         let relatedArtistsId = []
         let allTopTracks = []
+        console.log(allTopTracks);
 
         const reqs = randomArtistList1.map(function (item) {
           //let trackRequestPromises = []
@@ -96,15 +97,16 @@ router.get('/', authCheck, (req, res) => {
            
         });
 
+    
         Promise.all(reqs).then(() => {
+          // res.send(allTopTracks);
           console.log("Test")
-          //res.send(allTopTracks)
           res.render('spotitest', {
             userName: userName,
             id: id,
             artistlist: randomArtistList1,
-            relatedArtists: relatedArtists
-            // relatedTop: randomTop
+            relatedArtists: relatedArtists,
+            relatedTop: allTopTracks
           })
         })
 

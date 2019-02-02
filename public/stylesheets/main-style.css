@@ -24,7 +24,8 @@ html,
 body,
 header,
 #intro {
-	height: 100%;
+	width: 100%;
+	background-color:  #1d1d1b;
 }
 
 #intro {
@@ -52,6 +53,10 @@ body {
 	font-family: "ProximaNova", sans-serif;
 	background-color: white;
 	width: 100%;
+}
+
+.bodyPers {
+	background-color: #1d1d1b;
 }
 
 div {
@@ -280,7 +285,7 @@ p:last-of-type {
 .logout ul li a {
 	position: relative;
 	text-decoration: none;
-	color: white;
+	color: black;
 }
 
 div {

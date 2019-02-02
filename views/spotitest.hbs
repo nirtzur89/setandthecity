@@ -18,7 +18,14 @@
             {{/each}}</ul>
         </p>
       </div>
-      <div class="newsfeed col-6 font-weight-bold text-center">NEWSFEED</div>
+      <div class="newsfeed col-6 font-weight-bold text-center">NEWSFEED
+        <p class="tracks">
+          <ul>{{#each allTopTracks}}
+            <li>{{this.body}}</li>
+            {{/each}}</ul>
+        </p>
+
+      </div>
       <div class="artistInfo col-3 text-center">
         <p class="font-weight-bold">artists you might like -
           <ul>{{#each relatedArtists}}
