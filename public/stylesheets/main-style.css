@@ -164,6 +164,16 @@ p:last-of-type {
 	margin-bottom: 20px;
 }
 
+.artistPicture {
+	display: inline-block;
+}
+
+#artistIMG {
+	background-size: cover;
+	width: 64px;
+	height: 64px;
+}
+
 .mainPersonal {
 	margin-left: 20px;
 	margin-right: 20px;
