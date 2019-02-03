@@ -116,6 +116,20 @@ p:last-of-type {
 	color: #8dc686;
 }
 
+#logoutButton {
+	margin-top: 60px;
+	bottom: 120px;
+	text-decoration: none;
+	font-size: 8px;
+	line-height: 1;
+	border-radius: 500px;
+	padding: 10px 30px 12px;
+	border-width: 1;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	white-space: normal;
+}
+
 
 /* login via spotify button on home.hbs */
 #refreshButton {

@@ -5,6 +5,9 @@
         <h1>Let's boogie</h1>
       </div>
     </div>
+    <div>
+     <button type="button" onclick="logoutFunction()" id="logoutButton">LOGOUT</button>
+    </div>
   </div>
   <div class="mainPersonal container-fluid flex-row align-items-stretch justify-content-around flex-wrap w-100 text-center">
     <div class="row">
@@ -26,11 +29,13 @@
       </div>
 
 
-      {{!-- <div class="newsfeed_container order-xs-1 col-xs-12 col-md-6 font-weight-bold d-flex flex-column align-items-start justify-content-center"> --}}
+      {{!-- <div class="newsfeed_container order-xs-1 col-xs-12 col-md-6 font-weight-bold d-flex flex-column align-items-start justify-content-center">
+        --}}
         {{!-- newsfeed Header --}}
 
         <div class="newsfeed_header regularFont ">NEWSFEED</div>
-        <div id="newsfeedList" class="newsfeed_list order-xs-1 col-xs-12 col-md-6 font-weight-bold flex-column align-items-start justify-content-center" role="application" aria-label="media player">
+        <div id="newsfeedList" class="newsfeed_list order-xs-1 col-xs-12 col-md-6 font-weight-bold flex-column align-items-start justify-content-center"
+          role="application" aria-label="media player">
           <div class="jp-type-playlist">
             <div class="jp-playlist">
               {{!-- <ul>{{#each allTopTracks}}
@@ -58,7 +63,8 @@
           </div>
         </div>
 
-      {{!-- </div> --}}
+        {{!--
+      </div> --}}
 
     </div>
     <div class="artistInfo col-xs-6 col-md-3 text-center">
@@ -70,16 +76,22 @@
         {{/each}}</ul>
     </div>
   </div>
+  <div>
+    <a href="/auth"><button type="button" id="refreshButton">DISCOVER MORE</button></a>
+  </div>
 
 
 </div>
-<a href="/auth"><button type="button" id="refreshButton">DISCOVER MORE</button></a>
-</div>
 
-</div>
-
-</div>
-
+{{!-- <script>
+    function logoutFunction() {
+      document.getElementById("logoutButton").onclick = function() {
+        loggedIn == false;
+        res.redirect('/');
+        alert("Button clicked")
+      };
+    }
+  </script> --}}
 
 
 {{!-- <ul>

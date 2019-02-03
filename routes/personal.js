@@ -9,15 +9,23 @@ var spotifyApi = new SpotifyWebApi({
   //redirectUri: redirectUri
 });
 const router = express.Router();
+
+var loggedIn = false;
+
 //checking if user is authorized
 const authCheck = (req, res, next) => {
   if (!req.user) {
     res.redirect('/')
   } else {
     next();
+    loggedIn == true;
   }
 };
+
+
+
 //check if users already exists in our database
+
 //route
 router.get('/', authCheck, (req, res) => {
   //res.send("WE ARE AT YOUR PERSONAL 20 U 4 - WELCOME " + req.user.username);
