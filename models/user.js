@@ -10,6 +10,7 @@ const UserSchema = new mongoose.Schema({
   country: String,
   profile: Array,
   photo: Array,
+  loggedIn: Boolean,
   followedArtistsCount: Number,
   followedArtists: [{
     artistId: String,

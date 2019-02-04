@@ -5,8 +5,11 @@ const SpotifyStrategy = require('passport-spotify').Strategy;
 const mongoose = require('mongoose');
 const User = require('../models/user');
 
-const client_id = 'a3676c8b791c49048c222a84f7fd770c';
-const client_secret = '54708907189e407e8c5f6eb2328f9374';
+require("dotenv").config();
+
+
+const client_id = process.env.SPOTIFY_CLIENT_ID;
+const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
 
 
 //cookies
@@ -32,25 +35,28 @@ passport.use(
         spotifyId: profile._json.id
       })
       .then((currentUser) => {
+        //check if users already exists in our database
         if (currentUser) {
-          console.log('user already exists');
+          currentUser.delete({
+            spotifyId: profile._json.id
+          })
+          console.log('existing user deleted from database');
           done(null, currentUser);
-        } else {
-          new User({
-              username: profile._json.display_name,
-              email: profile._json.email,
-              spotifyId: profile._json.id,
-              spotifyAccessToken: accessToken,
-              country: profile._json.country,
-              profile: profile._json.profileUrl,
-              photo: profile._json.photos,
-              //followedArtistsCount: profile._json. 
-            }).save()
-            .then((newUser) => {
-              console.log('new user created' + newUser);
-              done(null, newUser);
-            })
         }
+        new User({
+            username: profile._json.display_name,
+            email: profile._json.email,
+            spotifyId: profile._json.id,
+            spotifyAccessToken: accessToken,
+            country: profile._json.country,
+            profile: profile._json.profileUrl,
+            photo: profile._json.photos,
+            loggedIn: true,
+          }).save()
+          .then((newUser) => {
+            console.log('new user created' + newUser);
+            done(null, newUser);
+          })
       })
   }));
 
