@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const User = require('../models/user');
 
 
-const client_id     = process.env.SPOTIFY_CLIENT_ID;
+const client_id = process.env.SPOTIFY_CLIENT_ID;
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
 
 
@@ -37,7 +37,24 @@ passport.use(
       .then((currentUser) => {
         if (currentUser) {
           console.log('user already exists');
-          done(null, currentUser);
+          currentUser.delete()
+            .then(() => {
+              new User({
+                  username: profile._json.display_name,
+                  email: profile._json.email,
+                  spotifyId: profile._json.id,
+                  spotifyAccessToken: accessToken,
+                  country: profile._json.country,
+                  profile: profile._json.profileUrl,
+                  photo: profile._json.photos,
+                  //followedArtistsCount: profile._json. 
+                }).save()
+                .then((newUser) => {
+                  console.log('new user created' + newUser);
+                  done(null, newUser);
+                })
+            })
+          // done(null, currentUser);
         } else {
           new User({
               username: profile._json.display_name,
