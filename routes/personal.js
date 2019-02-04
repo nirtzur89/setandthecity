@@ -1,11 +1,12 @@
+require("dotenv").config();
+
 const express = require('express');
 const hbs = require('express-handlebars');
 const SpotifyWebApi = require('spotify-web-api-node');
 
-require("dotenv").config();
-const client_id = process.env.SPOTIFY_CLIENT_ID;
-const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
 
+const client_id     = process.env.SPOTIFY_CLIENT_ID;
+const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
 
 var spotifyApi = new SpotifyWebApi({
   clientId: client_id,
@@ -22,6 +23,7 @@ const authCheck = (req, res, next) => {
     next();
   }
 };
+
 
 //route
 router.get('/', authCheck, (req, res) => {
