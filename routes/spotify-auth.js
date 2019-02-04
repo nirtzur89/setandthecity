@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
@@ -5,8 +7,9 @@ const SpotifyStrategy = require('passport-spotify').Strategy;
 const mongoose = require('mongoose');
 const User = require('../models/user');
 
-const client_id = 'a3676c8b791c49048c222a84f7fd770c';
-const client_secret = '54708907189e407e8c5f6eb2328f9374';
+
+const client_id     = process.env.SPOTIFY_CLIENT_ID;
+const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
 
 
 //cookies
@@ -55,43 +58,5 @@ passport.use(
   }));
 
 
-
-
-
-
-
-
-
-// // Retrieve an access token and a refresh token
-// spotifyApi.authorizationCodeGrant(authorizeURL).then(
-//   function (data) {
-//     console.log('The token expires in ' + data.body['expires_in']);
-//     console.log('The access token is ' + data.body['access_token']);
-//     console.log('The refresh token is ' + data.body['refresh_token']);
-
-//     // Set the access token on the API object to use it in later calls
-//     spotifyApi.setAccessToken(data.body['access_token']);
-//     // spotifyApi.setRefreshToken(data.body['refresh_token']);
-//     console.log('access token SET')
-//   },
-//   function (err) {
-//     console.log('Something went wrong!', err);
-//   }
-// );
-
-
-
-// clientId, clientSecret and refreshToken has been set on the api object previous to this call.
-// spotifyApi.refreshAccessToken().then(
-//   function (data) {
-//     console.log('The access token has been refreshed!');
-
-//     // Save the access token so that it's used in future calls
-//     spotifyApi.setAccessToken(data.body['access_token']);
-//   },
-//   function (err) {
-//     console.log('Could not refresh access token', err);
-//   }
-// );
 
 module.exports = router;

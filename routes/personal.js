@@ -1,16 +1,19 @@
+require("dotenv").config();
+
 const express = require('express');
 const hbs = require('express-handlebars');
 const SpotifyWebApi = require('spotify-web-api-node');
-const client_id = 'a3676c8b791c49048c222a84f7fd770c';
-const client_secret = '54708907189e407e8c5f6eb2328f9374';
+
+
+const client_id     = process.env.SPOTIFY_CLIENT_ID;
+const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
+
 var spotifyApi = new SpotifyWebApi({
   clientId: client_id,
   clientSecret: client_secret
-  //redirectUri: redirectUri
 });
-const router = express.Router();
 
-var loggedIn = false;
+const router = express.Router();
 
 //checking if user is authorized
 const authCheck = (req, res, next) => {
@@ -18,13 +21,9 @@ const authCheck = (req, res, next) => {
     res.redirect('/')
   } else {
     next();
-    loggedIn == true;
   }
 };
 
-
-
-//check if users already exists in our database
 
 //route
 router.get('/', authCheck, (req, res) => {
@@ -38,7 +37,7 @@ router.get('/', authCheck, (req, res) => {
   let relatedArtists = []
   let allTopTracks = []
   let randomImg = []
-  
+
   spotifyApi.getFollowedArtists(id)
     .then(function (data) {
       //console.log('what', data.body.artists.items)

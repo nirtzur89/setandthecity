@@ -1,6 +1,8 @@
 const express = require('express');
 const router  = express.Router();
-const passport = require('passport')
+const passport = require('passport');
+require("dotenv").config();
+
 
 /* GET home page */
 router.get('/', (req, res, next) => {
