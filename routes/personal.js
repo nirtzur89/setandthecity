@@ -29,6 +29,7 @@ const authCheck = (req, res, next) => {
 router.get('/', authCheck, (req, res) => {
   //res.send("WE ARE AT YOUR PERSONAL 20 U 4 - WELCOME " + req.user.username);
   var userName = req.user.username;
+  // var userImage = req.user.images;
   var id = req.user.spotifyId;
   var artistlist = req.user.artistlist;
 
@@ -69,11 +70,23 @@ router.get('/', authCheck, (req, res) => {
 
       dataArr.forEach((artist) => {
         let selectedTop = Math.floor(Math.random() * artist.body.tracks.length);
-        console.log('track', artist.body.tracks[selectedTop].name)
-        allTopTracks.push(artist.body.tracks[selectedTop].name)
+        console.log('track', artist.body.tracks[selectedTop])
+        let finalTracks = {
+          track: artist.body.tracks[selectedTop].name,
+          artist: artist.body.tracks[selectedTop].artists[0].name,
+          image: artist.body.tracks[selectedTop].album.images[0].url
+        }
+
+        allTopTracks.push(finalTracks);
+        // allTopTracks.push(artist.body.tracks[selectedTop].name)
+        // allTopTrackArtists.push(artist.body.tracks[selectedTop].artists[0].name)
+        // allTopTrackImg.push(artist.body.tracks[selectedTop].album.images[0].url)
+
       })
+
       res.render('spotitest', {
         userName: userName,
+        // userImage: userImage,
         id: id,
         artistlist: randomArtistList1,
         relatedArtists: relatedArtists,
