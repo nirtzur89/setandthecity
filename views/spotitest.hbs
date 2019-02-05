@@ -4,10 +4,11 @@
       <div class="welcome">
         <h1>Let's boogie</h1>
       </div>
+      <div>
+        <a href="/"><button type="button" id="logoutButton">logout</button></a>
+      </div>
     </div>
-    <div>
-     <button type="button" onclick="logoutFunction()" id="logoutButton">LOGOUT</button>
-    </div>
+
   </div>
   <div class="mainPersonal container-fluid flex-row align-items-stretch justify-content-around flex-wrap w-100 text-center">
     <div class="row">
@@ -83,15 +84,16 @@
 
 </div>
 
-{{!-- <script>
-    function logoutFunction() {
-      document.getElementById("logoutButton").onclick = function() {
-        loggedIn == false;
-        res.redirect('/');
-        alert("Button clicked")
-      };
-    }
-  </script> --}}
+{{!--
+<script>
+  function logoutFunction() {
+    document.getElementById("logoutButton").onclick = function () {
+      loggedIn == false;
+      res.redirect('/');
+      alert("Button clicked")
+    };
+  }
+</script> --}}
 
 
 {{!-- <ul>
