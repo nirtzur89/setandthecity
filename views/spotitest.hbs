@@ -1,102 +1,211 @@
 <div class="bodyPers container-fluid w-100 h-100 d-flex bd-highlight mb-3 justify-content-start align-items-around flex-column">
   <div class="headerPersonal container-fluid align-items-start flex-row flex-wrap">
-    <div class="row">
-      <div class="welcome">
-        <h1>Let's boogie</h1>
+    <div class="welcome">
+      <div class="logo"></div>
+      <div>
+        <h1 align="center">Let's boogie</h1>
       </div>
-    </div>
-    <div class="mainPersonal container-fluid flex-row align-items-stretch justify-content-around flex-wrap w-100 text-center">
-      <div class="row">
-        <div class="persInfo col-md-3">
-          <p class="regularFont font-weight-bold">YOU ARE FOLLOWING</p>
-
-          <div class="artistList">
-            <ul>{{#each artistImage}}
-              <li>
-                <div class="artistPicture">
-                  <img id="artistIMG" class="img-circle" src="{{this.[0].url}}">
-                </div>
-              </li>
-              {{/each}}
-            </ul>
-          </div>
-          {{!-- <li>{{this.name}}</li> --}}
-
-        </div>
-
-
-        {{!-- newsfeed Header --}}
-        <div class="newsfeed">
-          <p class="regularFont font-weight-bold">YOUR TRACKS</p>
-          <div id="newsfeedList" class="table-responsive newsfeed_list font-weight-bold flex-column align-items-start justify-content-center"
-            role="application" aria-label="media player">
-            <table style="width:100%" class="table">
-              <thead>
-                <tr>
-                  <th>1</th>
-                  <th>2</th>
-                  <th>3</th>
-                  <th>4</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr>
-                  <td class="col-md-1">IMG</td>
-                  <td class="col-md-5">artistname</td>
-                  <td class="col-md-5">track</td>
-                  <td class="col-md-1">play</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>play</td>
-                </tr>
-              </tbody>
-
-            </table>
-            <div class="jp-controls-holder ml-auto">
-              <button class="jp-play" tabindex="0"></button>
-            </div>
-            <div class="jp-play-bar"></div>
-
-            <div class="jp-progress">
-              <div class="jp-seek-bar">
-                <div class="jp-play-bar"></div>
-              </div>
-            </div>
-
-
-          </div>
-
-        </div>
-
-        <div class="artistInfo col-xs-6 col-md-3 text-center">
-          <p class="regularFont font-weight-bold">ARTISTS YOU MIGHT LIKE </p>
-          <ul>{{#each relatedArtists}}
-            {{#each this}}
-            <li>{{this}}</li>
-            {{/each}}
-            {{/each}}</ul>
-        </div>
-
-      </div>
-
-    </div>
-    <div class="refresh">
-      <a href="/auth"><button type="button" id="refreshButton">DISCOVER MORE</button></a>
-      <a href="/"><button type="button" id="logoutButton">LOGOUT</button></a>
+      <div class="userInfo">{{userName}}</div>
+      {{!-- <div class="userImage"><img id="userImage" class="img-circle" src=""></div> --}}
     </div>
   </div>
+  <div class="mainPersonal container-fluid flex-row align-items-stretch justify-content-around flex-wrap w-100 text-center">
+    <div class="row">
+      <div class="persInfo col-md-3">
+        <p class="regularFont font-weight-bold">5S YOU FOLLOW</p>
+
+        <div class="artistList">
+          <ul>{{#each artistImage}}
+            <li>
+              <div class="artistPicture">
+                <img id="artistIMG" class="img-circle" src="{{this.[0].url}}">
+              </div>
+            </li>
+            {{/each}}
+          </ul>
+        </div>
+        {{!-- <li>{{this.name}}</li> --}}
+
+      </div>
+
+
+      {{!-- newsfeed Header --}}
+      <div class="newsfeed">
+        <p class="regularFont font-weight-bold">YOUR TRACKS</p>
+        <div id="newsfeedList" class="table-responsive newsfeed_list font-weight-bold flex-column align-items-start justify-content-center"
+          role="application" aria-label="media player">
+          <table style="width:100%" class="table table-sm">
+            <thead>
+            </thead>
+
+            <tbody>
+              {{#each relatedTop}}
+              <tr>
+                <td><img id="albumIMG" class="img-circle" src="{{this.image}}"></td>
+                <td>{{this.artist}}</td>
+                <td>{{this.track}}</td>
+                <td>play</td>
+              </tr>
+              {{/each}}
+
+              {{!-- <tr>
+                <td>IMG</td>
+                <td>artistname</td>
+                <td>track</td>
+                <td>play</td>
+              </tr>
+              <tr>
+                <td>IMG</td>
+                <td>artistname</td>
+                <td>track</td>
+                <td>play</td>
+              </tr>
+              <tr>
+                <td>IMG</td>
+                <td>artistname</td>
+                <td>track</td>
+                <td>play</td>
+              </tr>
+              <tr>
+                <td>IMG</td>
+                <td>artistname</td>
+                <td>track</td>
+                <td>play</td>
+              </tr>
+              <tr>
+                <td>IMG</td>
+                <td>artistname</td>
+                <td>track</td>
+                <td>play</td>
+              </tr>
+              <tr>
+                <td>IMG</td>
+                <td>artistname</td>
+                <td>track</td>
+                <td>play</td>
+              </tr>
+              <tr>
+                <td>IMG</td>
+                <td>artistname</td>
+                <td>track</td>
+                <td>play</td>
+              </tr>
+              <tr>
+                <td>IMG</td>
+                <td>artistname</td>
+                <td>track</td>
+                <td>play</td>
+              </tr>
+              <tr>
+                <td>IMG</td>
+                <td>artistname</td>
+                <td>track</td>
+                <td>play</td>
+              </tr>
+              <tr>
+                <td>IMG</td>
+                <td>artistname</td>
+                <td>track</td>
+                <td>play</td>
+              </tr>
+              <tr>
+                <td>IMG</td>
+                <td>artistname</td>
+                <td>track</td>
+                <td>play</td>
+              </tr>
+              <tr>
+                <td>IMG</td>
+                <td>artistname</td>
+                <td>track</td>
+                <td>play</td>
+              </tr>
+              <tr>
+                <td>IMG</td>
+                <td>artistname</td>
+                <td>track</td>
+                <td>play</td>
+              </tr>
+              <tr>
+                <td>IMG</td>
+                <td>artistname</td>
+                <td>track</td>
+                <td>play</td>
+              </tr>
+              <tr>
+                <td>IMG</td>
+                <td>artistname</td>
+                <td>track</td>
+                <td>play</td>
+              </tr>
+              <tr>
+                <td>IMG</td>
+                <td>artistname</td>
+                <td>track</td>
+                <td>play</td>
+              </tr>
+              <tr>
+                <td>IMG</td>
+                <td>artistname</td>
+                <td>track</td>
+                <td>play</td>
+              </tr>
+              <tr>
+                <td>IMG</td>
+                <td>artistname</td>
+                <td>track</td>
+                <td>play</td>
+              </tr>
+              <tr>
+                <td>IMG</td>
+                <td>artistname</td>
+                <td>track</td>
+                <td>play</td>
+              </tr> --}}
+            </tbody>
+
+          </table>
+          <div class="jp-controls-holder ml-auto">
+            <button class="jp-play" tabindex="0"></button>
+          </div>
+
+
+          <div class="jp-progress">
+            <div class="jp-seek-bar"></div>
+          </div>
+
+
+        </div>
+
+      </div>
+
+      <div class="artistInfo col-xs-6 col-md-3 text-center">
+        <p class="regularFont font-weight-bold">ARTISTS YOU MIGHT LIKE </p>
+        <ul>{{#each relatedArtists}}
+          {{#each this}}
+          <li>{{this}}</li>
+          {{/each}}
+          {{/each}}</ul>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="refresh">
+    <a href="/auth"><button type="button" id="refreshButton">DISCOVER MORE</button></a>
+    <a href="/"><button type="button" id="logoutButton">LOGOUT</button></a>
+  </div>
+</div>
 
 
 
 
-  {{!-- <ul>
-    {{#each followedArtists}}
-    <li>{{this}}</li>
-    {{/each}}
-  </ul> --}}
+{{!-- <ul>
+  {{#each followedArtists}}
+  <li>{{this}}</li>
+  {{/each}}
+</ul> --}}
 
-  {{!-- <ul>{{#each allTopTracks}}
-    <li>{{this.body}}</li>
-    {{/each}}</ul> --}}
+{{!-- <ul>{{#each allTopTracks}}
+  <li>{{this.body}}</li>
+  {{/each}}</ul> --}}
