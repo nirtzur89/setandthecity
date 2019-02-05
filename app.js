@@ -74,18 +74,18 @@ app.use('/fonts', express.static('fonts'));
 const home = require('./routes/home');
 app.use('/', home);
 
-// const button = document.getElementById('authButton');
-// button.addEventListener('click', function(e) {
-//  console.log('button was clicked');
-// });
-
 //auth
-
 const auth = require('./routes/spotify-auth');
 app.use('/auth', auth);
 
 const personalPage = require('./routes/personal');
 app.use('/personal', personalPage);
+
+//logout
+app.get('/logout', function (req, res) {
+  req.logout();
+  res.redirect('/');
+})
 
 
 

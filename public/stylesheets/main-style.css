@@ -36,6 +36,56 @@ header,
 	background-color: #1d1d1b;
 }
 
+/* Buttons */
+#logoutButton,
+#refreshButton,
+#authButton {
+	border-width: 1;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	white-space: normal;
+	text-decoration: none;
+	color: white;
+	line-height: 1;
+	border-radius: 500px;
+}
+
+
+
+#logoutButton {
+	margin-top: 60px;
+	bottom: 120px;
+	line-height: 1;
+	font-size: 8px;
+	padding: 10px 30px 12px;
+}
+
+
+/* login via spotify button on home.hbs */
+#refreshButton {
+	position: center;
+	margin-top: 60px;
+	bottom: 120px;
+	right: 20px;
+	width: 300px;
+	font-weight: bold;
+	background-color: #8dc686;
+	font-size: 14px;
+	padding: 16px 48px 18px;
+}
+
+#authButton {
+	position: fixed;
+	bottom: 120px;
+	right: 20px;
+	width: 300px;
+	font-weight: bold;
+	background-color: #1d1d1b;
+	font-size: 14px;
+	padding: 16px 48px 18px;
+	letter-spacing: 2px;
+}
+
 #intro {
 	background: url("../images/headphones.png")no-repeat center center fixed;
 	-webkit-background-size: cover;
@@ -117,60 +167,7 @@ p:last-of-type {
 	color: #8dc686;
 }
 
-#logoutButton {
-	margin-top: 60px;
-	bottom: 120px;
-	text-decoration: none;
-	font-size: 8px;
-	line-height: 1;
-	border-radius: 500px;
-	padding: 10px 30px 12px;
-	border-width: 1;
-	letter-spacing: 2px;
-	text-transform: uppercase;
-	white-space: normal;
-}
 
-
-/* login via spotify button on home.hbs */
-#refreshButton {
-	position: center;
-	margin-top: 60px;
-	bottom: 120px;
-	right: 20px;
-	width: 300px;
-	text-decoration: none;
-	color: white;
-	font-weight: bold;
-	background-color: #8dc686;
-	font-size: 14px;
-	line-height: 1;
-	border-radius: 500px;
-	padding: 16px 48px 18px;
-	border-width: 1;
-	letter-spacing: 2px;
-	text-transform: uppercase;
-	white-space: normal;
-}
-
-#authButton {
-	position: fixed;
-	bottom: 120px;
-	right: 20px;
-	width: 300px;
-	text-decoration: none;
-	color: white;
-	font-weight: bold;
-	background-color: #1d1d1b;
-	font-size: 14px;
-	line-height: 1;
-	border-radius: 500px;
-	padding: 16px 48px 18px;
-	border-width: 1;
-	letter-spacing: 2px;
-	text-transform: uppercase;
-	white-space: normal;
-}
 
 /*header*/
 .header {
