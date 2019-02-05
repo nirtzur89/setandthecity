@@ -51,13 +51,15 @@ header,
 }
 
 
-
 #logoutButton {
-	margin-top: 60px;
+	position: center;
+	margin-top: 30px;
 	bottom: 120px;
-	line-height: 1;
-	font-size: 8px;
-	padding: 10px 30px 12px;
+	width: 200px;
+	font-weight: bold;
+	background-color: #1d1d1b;
+	font-size: 14px;
+	padding: 16px 48px 18px;
 }
 
 
@@ -66,12 +68,19 @@ header,
 	position: center;
 	margin-top: 60px;
 	bottom: 120px;
-	right: 20px;
 	width: 300px;
 	font-weight: bold;
 	background-color: #8dc686;
 	font-size: 14px;
 	padding: 16px 48px 18px;
+}
+
+.refresh {
+	display: flex;
+	justify-content: flex-start;
+	flex-direction: column;
+	align-content: center;
+	align-items: center;
 }
 
 #authButton {
@@ -125,7 +134,8 @@ div {
 	box-sizing: border-box;
 }
 
-ul {
+ul
+tr {
 	list-style: none;
 	margin-bottom: 0px;
 }
@@ -196,14 +206,6 @@ p:last-of-type {
 	/* border-color: white; */
 }
 
-.userInfo {
-	width: 80px;
-	height: 100px;
-	/* border-style: solid; */
-	/* border-color: blue; */
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
 
 .artistPicture {
 	display: inline-block;
@@ -223,12 +225,15 @@ p:last-of-type {
 }
 
 .mainPersonal {
-	margin-left: 20px;
-	margin-right: 20px;
 	margin-top: 40px;
 }
 
 /* NewsFeed */
+.newsfeed {
+	vertical-align: top;
+	width: 50%;
+}
+
 .newsfeed_container {
 	width: 100%;
 	height: 100%;
@@ -237,25 +242,24 @@ p:last-of-type {
 #newsfeedList {
 	width: 100%;
 	border: solid 1px #d3d3d3;
-	background:  #1d1d1b;
+	background: #1d1d1b;
+	margin-top: 20px;
 }
 
-/* .newsfeed_header{
-
+.newsfeed_header {
+ text-align: center;
 }
-
- */
 
 .jp-playlist {
 	background: #1d1d1b;
 }
 
-.jp-playlist ul {
+.jp-playlist tr {
 	/*padding-left: 55px;*/
 	background: #1d1d1b;
 }
 
-.jp-playlist li {
+.jp-playlist td {
 	position: relative;
 	height: 20px;
 	border-bottom: none;
@@ -263,8 +267,8 @@ p:last-of-type {
 	background: #1d1d1b;
 }
 
-.jp-playlist li::before,
-#newsfeedList.jp-state-playing .jp-playlist li.jp-playlist-current::before {
+.jp-playlist td::before,
+#newsfeedList.jp-state-playing .jp-playlist td.jp-playlist-current::before {
 	display: block;
 	position: absolute;
 	top: 0;
@@ -287,48 +291,16 @@ p:last-of-type {
 	visibility: visible;
 }
 
-.jp-playlist li>div {
-	display: -webkit-box;
-	display: -moz-box;
-	display: -ms-flexbox;
-	display: -webkit-flex;
-	display: flex;
-	flex-direction: row;
-	justify-content: start;
-	align-items: center;
-	padding-left: 40px;
-	padding-right: 40px;
-	-webkit-transition: all 200ms ease;
-	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
-	-o-transition: all 200ms ease;
-	transition: all 200ms ease;
-}
-
-.jp-playlist li>div::before {
-	display: block;
-	position: absolute;
-	left: 0;
-	top: 50%;
-	-webkit-transform: translateY(-50%);
-	-moz-transform: translateY(-50%);
-	-ms-transform: translateY(-50%);
-	-o-transform: translateY(-50%);
-	transform: translateY(-50%);
-	font-family: "ProximaNova_regular";
-	color: rgba(255, 255, 255, 0.5);
-}
-
-/* .jp-playlist li:not(:last-child) {
+/* .jp-playlist td:not(:last-child) {
 	margin-bottom: 14px;
 } */
 
-#newsfeedList.jp-state-playing .jp-playlist li.jp-playlist-current>div::before {
+#newsfeedList.jp-state-playing .jp-playlist td.jp-playlist-current>div::before {
 	color: #FFFFFF;
 }
 
-#newsfeedList.jp-state-playing .jp-playlist li.jp-playlist-current a,
-#newsfeedList_1.jp-state-playing .jp-playlist li.jp-playlist-current>div .song_duration {
+#newsfeedList.jp-state-playing .jp-playlist td.jp-playlist-current a,
+#newsfeedList_1.jp-state-playing .jp-playlist td.jp-playlist-current>div .song_duration {
 	color: #FFFFFF !important;
 }
 
@@ -355,7 +327,7 @@ p:last-of-type {
 	-ms-transform: translate(-50%, -50%);
 	-o-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
-	font-family:  "FontAwesome";
+	font-family: "FontAwesome";
 	font-size: 20px;
 	color: #FFFFFF;
 	content: '\f04b';
@@ -384,7 +356,7 @@ p:last-of-type {
 /* .newsfeed_list_container {
 } */
 
-.newsfeed_list li {
+.newsfeed_list td {
 	width: 100%;
 	height: 50px;
 	background: #333232;
@@ -394,11 +366,11 @@ p:last-of-type {
 	font-size: 18px;
 }
 
-.newsfeed_list li a {
+.newsfeed_list td a {
 	color: #FFFFFF;
 }
 
-.newsfeed_list li:not(:last-of-type) {
+.newsfeed_list td:not(:last-of-type) {
 	margin-bottom: 5px;
 }
 
@@ -428,7 +400,8 @@ div {
 	box-sizing: border-box;
 }
 
-ul {
+ul,
+tr {
 	list-style: none;
 	margin-bottom: 0px;
 }
