@@ -290,6 +290,13 @@ tr {
 	background-color: #1d1d1b;
 }
 
+.table-wrapper-scroll-y {
+	display:block;
+	max-height: 400px;
+	overflow-y: auto;
+	-ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
 .table td:nth-child(1),
 .table td:nth-child(4) {
 	width: 10%;
