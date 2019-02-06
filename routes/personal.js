@@ -73,8 +73,8 @@ router.get('/', authCheck, (req, res) => {
         relatedArtists.push(relatedArtistArray)
         let relatedArtistImageArray = randomRelatedArtists.map(x => x.images)
         relatedArtistsImage.push(relatedArtistImageArray)
-        console.log('line 74', relatedArtistArray)
-        console.log('line 75', relatedArtistsImage[0])
+        //console.log('line 74', relatedArtistArray)
+        //console.log('line 75', relatedArtistsImage[0])
 
         mergedArtistsIds = [].concat.apply([], relatedArtistsId);
         //console.log('line 66', mergedArtistsIds)
@@ -87,11 +87,14 @@ router.get('/', authCheck, (req, res) => {
 
       dataArr.forEach((artist) => {
         let selectedTop = Math.floor(Math.random() * artist.body.tracks.length);
-        // console.log('track', artist.body.tracks[selectedTop])
+        console.log('track', artist.body.tracks[selectedTop])
         let finalTracks = {
           track: artist.body.tracks[selectedTop].name,
           artist: artist.body.tracks[selectedTop].artists[0].name,
-          image: artist.body.tracks[selectedTop].album.images[0].url
+          image: artist.body.tracks[selectedTop].album.images[0].url,
+          preview: artist.body.tracks[selectedTop].preview_url,
+          link: artist.body.tracks[selectedTop].id,
+          artistPageLink: artist.body.tracks[selectedTop].artists[0].id
         }
         allTopTracks.push(finalTracks);
       })
