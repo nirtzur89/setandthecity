@@ -55,9 +55,9 @@
               {{#each relatedTop}}
               <tr>
                 <td><img id="albumIMG" class="img-circle" src="{{this.image}}"></td>
-                <td>{{this.artist}}</td>
-                <td>{{this.track}}</td>
-                <td>play</td>
+                <td><a href="https://open.spotify.com/artist/{{this.artistPageLink}}"target="_blank">{{this.artist}}</a></td>
+                <td><a href="https://open.spotify.com/track/{{this.link}}"target="_blank">{{this.track}}</a></td>
+                <td><a href="{{this.preview}}"target="_blank">play preview</a></td>
               </tr>
               {{/each}}
             </tbody>
