@@ -286,6 +286,10 @@ tr {
 	padding: 0;
 }
 
+.table-dark {
+	background-color: #1d1d1b;
+}
+
 .table td:nth-child(1),
 .table td:nth-child(4) {
 	width: 10%;
