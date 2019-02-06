@@ -63,9 +63,8 @@
             </tbody>
 
           </table>
-          {{!-- <div class="jp-controls-holder ml-auto">
-            <button class="jp-play" tabindex="0"></button>
-          </div> --}}
+
+
 
 
           <div class="jp-progress">
@@ -75,11 +74,17 @@
 
         </div>
 
+        <div class="jp-controls-holder ml-auto">
+          <button type="button" id="buttonPlay" class="jp-play" onclick="buttonPlayPress()">
+            <i class="fas fa-angle-right" sytle="color: white"></i>
+          </button>
+        </div>
+
       </div>
 
       <div class="artistInfo col-xs-6 col-md-3 text-center">
         <div class="headerP headerRelated">
-          <p class="regularFont font-weight-bold">ARTISTS YOU MIGHT LIKE </p>
+          <p class="regularFont font-weight-bold">ARTISTS MATCHING</p>
         </div>
         <div class="list">
           <ul>{{#each relatedArtists}}
@@ -95,7 +100,7 @@
 
   </div>
   <div class="refresh">
-    <a href="/auth"><button type="button" id="refreshButton">DISCOVER MORE</button></a>
+    <a href="/personal"><button type="button" id="refreshButton">DISCOVER MORE</button></a>
     <a href="/"><button type="button" id="logoutButton">LOGOUT</button></a>
   </div>
 </div>
