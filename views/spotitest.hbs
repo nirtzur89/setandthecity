@@ -1,20 +1,31 @@
 <div class="bodyPers container-fluid w-100 h-100 d-flex bd-highlight mb-3 justify-content-start align-items-around flex-column">
   <div class="headerPersonal container-fluid align-items-start flex-row flex-wrap">
     <div class="welcome">
-      <div class="logo"></div>
       <div>
-        <h1 align="center">Let's boogie</h1>
+        <img id="logoWhite" src="./images/logoWhite.jpg" alt="LOGO" width="300px" height="300px">
       </div>
-      <div class="userInfo">{{userName}}</div>
-      {{!-- <div class="userImage"><img id="userImage" class="img-circle" src=""></div> --}}
+      <div>
+        <h1 class="letsBoogie">Let's boogie</h1>
+      </div>
+      <div class="userInfo">
+        <div class="userImage">
+          <img id="userPhoto" class="img-circle" src="./images/cat2.jpg">
+        </div>
+        <div class="userImage">{{userName}}</div>
+      </div>
     </div>
   </div>
+
+  <hr class="line">
+
   <div class="mainPersonal container-fluid flex-row align-items-stretch justify-content-around flex-wrap w-100 text-center">
     <div class="row">
       <div class="persInfo col-md-3">
-        <p class="regularFont font-weight-bold">5S YOU FOLLOW</p>
+        <div class="headerP headerArtists">
+          <p class="regularFont font-weight-bold">5S YOU FOLLOW</p>
+        </div>
 
-        <div class="artistList">
+        <div class="artistList list">
           <ul>{{#each artistImage}}
             <li>
               <div class="artistPicture">
@@ -31,7 +42,9 @@
 
       {{!-- newsfeed Header --}}
       <div class="newsfeed">
-        <p class="regularFont font-weight-bold">YOUR TRACKS</p>
+        <div class="headerP headerTracks">
+          <p class="regularFont font-weight-bold">YOUR TRACKS</p>
+        </div>
         <div id="newsfeedList" class="table-responsive newsfeed_list font-weight-bold flex-column align-items-start justify-content-center"
           role="application" aria-label="media player">
           <table style="width:100%" class="table table-sm">
@@ -47,121 +60,6 @@
                 <td>play</td>
               </tr>
               {{/each}}
-
-              {{!-- <tr>
-                <td>IMG</td>
-                <td>artistname</td>
-                <td>track</td>
-                <td>play</td>
-              </tr>
-              <tr>
-                <td>IMG</td>
-                <td>artistname</td>
-                <td>track</td>
-                <td>play</td>
-              </tr>
-              <tr>
-                <td>IMG</td>
-                <td>artistname</td>
-                <td>track</td>
-                <td>play</td>
-              </tr>
-              <tr>
-                <td>IMG</td>
-                <td>artistname</td>
-                <td>track</td>
-                <td>play</td>
-              </tr>
-              <tr>
-                <td>IMG</td>
-                <td>artistname</td>
-                <td>track</td>
-                <td>play</td>
-              </tr>
-              <tr>
-                <td>IMG</td>
-                <td>artistname</td>
-                <td>track</td>
-                <td>play</td>
-              </tr>
-              <tr>
-                <td>IMG</td>
-                <td>artistname</td>
-                <td>track</td>
-                <td>play</td>
-              </tr>
-              <tr>
-                <td>IMG</td>
-                <td>artistname</td>
-                <td>track</td>
-                <td>play</td>
-              </tr>
-              <tr>
-                <td>IMG</td>
-                <td>artistname</td>
-                <td>track</td>
-                <td>play</td>
-              </tr>
-              <tr>
-                <td>IMG</td>
-                <td>artistname</td>
-                <td>track</td>
-                <td>play</td>
-              </tr>
-              <tr>
-                <td>IMG</td>
-                <td>artistname</td>
-                <td>track</td>
-                <td>play</td>
-              </tr>
-              <tr>
-                <td>IMG</td>
-                <td>artistname</td>
-                <td>track</td>
-                <td>play</td>
-              </tr>
-              <tr>
-                <td>IMG</td>
-                <td>artistname</td>
-                <td>track</td>
-                <td>play</td>
-              </tr>
-              <tr>
-                <td>IMG</td>
-                <td>artistname</td>
-                <td>track</td>
-                <td>play</td>
-              </tr>
-              <tr>
-                <td>IMG</td>
-                <td>artistname</td>
-                <td>track</td>
-                <td>play</td>
-              </tr>
-              <tr>
-                <td>IMG</td>
-                <td>artistname</td>
-                <td>track</td>
-                <td>play</td>
-              </tr>
-              <tr>
-                <td>IMG</td>
-                <td>artistname</td>
-                <td>track</td>
-                <td>play</td>
-              </tr>
-              <tr>
-                <td>IMG</td>
-                <td>artistname</td>
-                <td>track</td>
-                <td>play</td>
-              </tr>
-              <tr>
-                <td>IMG</td>
-                <td>artistname</td>
-                <td>track</td>
-                <td>play</td>
-              </tr> --}}
             </tbody>
 
           </table>
@@ -180,12 +78,17 @@
       </div>
 
       <div class="artistInfo col-xs-6 col-md-3 text-center">
-        <p class="regularFont font-weight-bold">ARTISTS YOU MIGHT LIKE </p>
-        <ul>{{#each relatedArtists}}
-          {{#each this}}
-          <li>{{this}}</li>
-          {{/each}}
-          {{/each}}</ul>
+        <div class="headerP headerRelated">
+          <p class="regularFont font-weight-bold">ARTISTS YOU MIGHT LIKE </p>
+        </div>
+        <div class="list">
+          <ul>{{#each relatedArtists}}
+            {{#each this}}
+            <li>{{this}}</li>
+            {{/each}}
+            {{/each}}</ul>
+        </div>
+
       </div>
 
     </div>
