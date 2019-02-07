@@ -150,67 +150,64 @@ body {
   width: 100%;
 }
 
-.wrapper {
-	text-align:center;
-	font-size:20px;
-	color:#fff;
-	position:relative;
+.c {
+  font-family: "ProximaNova_altbold", sans-serif;
+  color: #8dc686;
+  width: 100%;
+  text-align:center;
+  display:block;
+  padding-top:30vh;
+  height:100vh;
+  overflow:hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  -webkit-transform: translate3d(0,0,0);
 }
 
-/*
-.line {
-	width:1px;
-	height:100px;
-	color:#000;
-	background:#000;
-	margin-left:250px;
-	animation: line 5s  ease-in-out 2s infinite;
-} */
-
-.circle-2 {
-	width: 1px;
-	height: 200px;
-	background: url("../images/204U-04copy.png");
-	border: 1px white solid;
-	position:absolute;
-	top:0;
-	left:250px;
+.b div {
+  display:inline-block;
+  overflow:hidden;
+  white-space:nowrap;
 }
 
-.circle {
-	line-height:100px;
-	width: 100px;
-	border-radius:50px;
-	height: 100px;
-	background: url("../images/204U-04copy.png");
-	border: 1px white solid;
-	position: relative;
-	animation: mymove 5s  ease-in-out 2s infinite;
-	position:absolute;
-	top:100px;
-	left:200px;
+.b div:first-of-type { 
+animation: showup 7s infinite;
 }
 
-.cirle-2 img {
-	display: inline block;
+.b div:last-of-type {
+width:0px;
+animation: reveal 7s infinite;
 }
 
-.circle img {
-	display: inline block;
+.b div:last-of-type h2 {
+margin-left:-355px;
+animation: slidein 7s infinite;
+max-width: 600;
 }
 
-
-/* Chrome, Safari, Opera */
-@keyframes line {
-	0% { height:100px}
-	50% { height:200px}
-	100% { height:100px}
+.headerText {
+ max-width:800px;
+}
+@keyframes showup {
+    0% {opacity:0;}
+    20% {opacity:1;}
+    80% {opacity:1;}
+    100% {opacity:0;}
 }
 
-@keyframes mymove {
-	0% { top:100px}
-	50% { top:200px}
-	100% { top:100px}
+@keyframes slidein {
+    0% { margin-left:-300px; }
+    20% { margin-left:-300px; }
+    35% { margin-left:0px; }
+    100% { margin-left:100px; }
+}
+
+@keyframes reveal {
+    0% {opacity:0;width:0px;}
+    20% {opacity:1;width:0px;}
+    30% {width:70%;}
+    80% {opacity:1;}
+    100% {opacity:0;width:70%;}
 }
 
 .bodyPers {
@@ -348,16 +345,17 @@ hr.line {
 }
 
 #artistIMG {
+  position: center;
   background-size: cover;
-  width: 64px;
-  height: 64px;
+  width: 56px;
+  height: 56px;
   margin-bottom: 20px;
 }
 
 #relatedArtistsIMG {
   background-size: cover;
-  width: 64px;
-  height: 64px;
+  width: 56px;
+  height: 56px;
   margin-bottom: 20px;
   margin-right: 10px;
 }
