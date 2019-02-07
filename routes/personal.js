@@ -41,7 +41,8 @@ router.get('/', authCheck, (req, res) => {
   let randomImg = []
   // let followedArtistName = []
   let relatedArtistsImage = []
-  let allFollowedArtists = [];
+  let allFollowedArtists = []
+  let allRelatedArtists = []
   
 
   spotifyApi.getMe()
@@ -81,6 +82,13 @@ router.get('/', authCheck, (req, res) => {
       dataArr.forEach((data) => {
         let randomRelatedArtists = data.body.artists.sort(() => .4 - Math.random()).slice(0, 4);
         // console.log('line 49', randomRelatedArtists[0].images)
+
+        randomRelatedArtists.forEach(el => allRelatedArtists.push({
+          id: el.id,
+          name: el.name,
+          image: el.images,
+        }));
+
 
         let relatedArtistIdArray = randomRelatedArtists.map(x => x.id)
         relatedArtistsId.push(relatedArtistIdArray)
@@ -127,6 +135,7 @@ router.get('/', authCheck, (req, res) => {
         relatedArtistsImage: relatedArtistsImage,
         relatedTop: allTopTracks,
         artistImage: randomImg,
+        allRelatedArtists: allRelatedArtists,
       })
     });
 

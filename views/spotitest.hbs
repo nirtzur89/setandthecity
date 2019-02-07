@@ -80,22 +80,25 @@
       </div>
 
       <div class="artistInfo col-xs-6 col-md-3 text-center">
-        <div class="headerP headerRelated">
+        <div class="headerP headerArtists">
           <p class="regularFont font-weight-bold">ARTISTS MATCHING</p>
         </div>
-        <div class="list">
-          <ul class="artistsUl">{{#each relatedArtistsImage}}
-            <li>
-              <div class="artistPictureRelated">
-                <img id="relatedArtistsIMG" class="img-circle hoverImage" src="{{this.[0].[0].url}}">
-                <img id="relatedArtistsIMG" class="img-circle hoverImage" src="{{this.[1].[0].url}}">
-                <img id="relatedArtistsIMG" class="img-circle hoverImage" src="{{this.[2].[0].url}}">
-                <img id="relatedArtistsIMG" class="img-circle hoverImage" src="{{this.[3].[0].url}}">
+        <div class="artistList list">{{#each allRelatedArtists}}
+
+          <div class="artistPicture">
+            <img id="relatedArtistsIMG" class="img-circle hoverImage" src="{{this.image.[0].url}}">
+            <div class="middle">
+              <div class="artistPicture d-flex container-fluid flex-row justify-content-center align-items-center">
+                <p class="row">{{this.name}}</p>
               </div>
-            </li>
-            {{/each}}
-          </ul>
+            </div>
+          </div>
+
+
+
+          {{/each}}
         </div>
+
       </div>
     </div>
   </div>

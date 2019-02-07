@@ -290,6 +290,8 @@ hr {
   height: 56px;
   margin-bottom: 10px;
   margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .artistsUl {
@@ -331,27 +333,24 @@ hr {
 .artistInfo {
   font-family: "ProximaNova_thin";
   color: white;
+  height: 500px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
 }
 
 .list {
   margin-top: 25px;
 }
 
-#artistIMG {
+#artistIMG,
+#relatedArtistsIMG
+ {
   background-size: cover;
   width: 56px;
   height: 56px;
   margin-bottom: 20px;
-}
-
-#relatedArtistsIMG {
-  background-size: cover;
-  width: 56px;
-  height: 56px; 
-  margin-right: 5px;
-  margin-left: 5px;
-  margin-bottom: 10px;
-  margin-top: 10px;
 }
 
 .artistPictureRelated {
