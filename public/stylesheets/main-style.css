@@ -157,16 +157,6 @@ body {
     position:relative;
 }
 
-/*
-.line {
-    width:1px;
-    height:100px;
-    color:#000;
-    background:#000;
-    margin-left:250px;
-    animation: line 5s  ease-in-out 2s infinite;
-} */
-
 .circle-2 {
     width: 1px;
     height: 200px;
@@ -191,19 +181,6 @@ body {
     left:200px;
 }
 
-
-/* Chrome, Safari, Opera */
-@keyframes line {
-    0% { height:100px}
-    50% { height:200px}
-    100% { height:100px}
-}
-
-@keyframes mymove {
-    0% { top:100px}
-    50% { top:200px}
-    100% { top:100px}
-}
 
 .bodyPers {
   background-color: #1d1d1b;
@@ -297,6 +274,15 @@ hr.line {
 
 .artistPicture {
   display: inline-block;
+  vertical-align: middle;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.artistsUl {
+  padding: 0;
 }
 
 .hoverImage {
@@ -342,15 +328,15 @@ hr.line {
 
 #artistIMG {
   background-size: cover;
-  width: 64px;
-  height: 64px;
+  width: 56px;
+  height: 56px;
   margin-bottom: 20px;
 }
 
 #relatedArtistsIMG {
   background-size: cover;
-  width: 64px;
-  height: 64px;
+  width: 56px;
+  height: 56px;
   margin-bottom: 20px;
   margin-right: 10px;
 }
@@ -505,12 +491,6 @@ i {
   -o-transform: translateY(-50%);
   transform: translateY(-50%);
   right: 52px;
-}
-
-.logout ul li a {
-  position: relative;
-  text-decoration: none;
-  color: black;
 }
 
 div {

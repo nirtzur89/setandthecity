@@ -26,14 +26,14 @@
         </div>
 
         <div class="artistList list">
-          <ul>{{#each artistImage}}
+          <ul class="artistsUl">{{#each allFollowedArtists}}
             <li>
               <div class="artistPicture">
-                <img id="artistIMG" class="img-circle hoverImage" src="{{this.[0].url}}">
+                <img id="artistIMG" class="img-circle hoverImage" src="{{this.image.[0].url}}">
                 <div class="middle">
-                  {{#each followedArtistName}}
-                  <div class="randomFollows">{{this.[0]}}</div>
-                  {{/each}}
+                 
+                  <div class="artistPicture d-flex container-fluid flex-row justify-content-center align-items-center"><p class="row">{{this.name}}</p></div>
+    
                 </div>
               </div>
             </li>
@@ -78,9 +78,7 @@
 
 
 
-          <div class="jp-progress">
-            <div class="jp-seek-bar"></div>
-          </div>
+
 
 
         </div>
@@ -94,9 +92,9 @@
           <p class="regularFont font-weight-bold">ARTISTS MATCHING</p>
         </div>
         <div class="list">
-          <ul>{{#each relatedArtistsImage}}
+          <ul class="artistsUl">{{#each relatedArtistsImage}}
             <li>
-              <div class="artistPicture">
+              <div class="artistPictureRelated">
                 <img id="relatedArtistsIMG" class="img-circle" src="{{this.[0].[0].url}}">
                 <img id="relatedArtistsIMG" class="img-circle" src="{{this.[1].[0].url}}">
                 <img id="relatedArtistsIMG" class="img-circle" src="{{this.[2].[0].url}}">
@@ -124,15 +122,3 @@
   </div>
 </div>
 
-
-
-
-{{!-- <ul>
-  {{#each followedArtists}}
-  <li>{{this}}</li>
-  {{/each}}
-</ul> --}}
-
-{{!-- <ul>{{#each allTopTracks}}
-  <li>{{this.body}}</li>
-  {{/each}}</ul> --}}

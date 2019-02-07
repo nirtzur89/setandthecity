@@ -57,16 +57,15 @@ router.get('/', authCheck, (req, res) => {
     .then(function (data) {
       //console.log('what', data.body.artists.items)
       randomArtistList1 = data.body.artists.items.sort(() => .5 - Math.random()).slice(0, 5);
-      console.log('ID', data.body)
+      console.log('ID', data.body.artists.items)
 
-      let followedArtistObj = {
-        id: data.body.artists.items[0].id,
-        name: data.body.artists.items[0].name,
-        image: data.body.artists.items[0].images
-      }
-      randomArtistList1.forEach(el => allFollowedArtists.push(followedArtistObj));
+      randomArtistList1.forEach(el => allFollowedArtists.push({
+        id: el.id,
+        name: el.name,
+        image: el.images
+      }));
 
-      randomArtistList1.forEach(el => randomImg.push(el.images));
+      // randomArtistList1.forEach(el => randomImg.push(el.images));
       // randomArtistList1.forEach(el => followedArtistName.push(el.name))
       // console.log('artistIMG', randomImg);
       return Promise.all(randomArtistList1.map(function (item) {
@@ -123,6 +122,7 @@ router.get('/', authCheck, (req, res) => {
         userImage: userImage[0][0],
         artistlist: randomArtistList1,
         // followedArtistName: followedArtistName,
+        allFollowedArtists: allFollowedArtists,
         relatedArtists: relatedArtists,
         relatedArtistsImage: relatedArtistsImage,
         relatedTop: allTopTracks,
