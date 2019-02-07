@@ -208,7 +208,7 @@ ul tr {
 }
 
 .userInfo {
-  width: 100px;
+  width: 140px;
   height: 100px;
   font-size: 14px;
   display: flex;
@@ -233,6 +233,16 @@ ul tr {
   z-index: 100;
 }
 
+.logoWhiteDiv {
+  width: 140px;
+  height: 100px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 #logoWhite {
   background-size: cover;
   width: 64px;
@@ -244,8 +254,9 @@ ul tr {
   margin: 0;
 }
 
-hr.line {
-  border-top: 1px solid white;
+hr {
+  border-top: 1px white solid;
+  width: 100%;
 }
 
 .headerP {
@@ -275,8 +286,8 @@ hr.line {
 .artistPicture {
   display: inline-block;
   vertical-align: middle;
-  width: 64px;
-  height: 64px;
+  width: 56px;
+  height: 56px;
   margin-bottom: 10px;
   margin-top: 10px;
 }
@@ -336,9 +347,16 @@ hr.line {
 #relatedArtistsIMG {
   background-size: cover;
   width: 56px;
-  height: 56px;
-  margin-bottom: 20px;
-  margin-right: 10px;
+  height: 56px; 
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.artistPictureRelated {
+  margin: 0;
+  padding: 0;
 }
 
 .mainPersonal {

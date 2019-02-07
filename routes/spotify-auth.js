@@ -31,6 +31,8 @@ passport.use(
     callbackURL: '/logincon'
   }, (accessToken, refreshToken, expires_in, profile, done) => {
 
+
+    
     User.findOne({
         spotifyId: profile._json.id
       })
