@@ -87,6 +87,9 @@ app.get('/logout', function (req, res) {
   res.redirect('/');
 })
 
+const info = require('./routes/info');
+app.use('/info', info);
+
 
 
 module.exports = app;

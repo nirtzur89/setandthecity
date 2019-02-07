@@ -1,355 +1,480 @@
 @font-face {
-	font-family: "ProximaNova_altblack";
-	src: url("/fonts/MarkSimonson\ -\ ProximaNovaAltBlack-webfont.ttf") format('truetype');
+  font-family: "ProximaNova_altblack";
+  src: url("/fonts/MarkSimonson\ -\ ProximaNovaAltBlack-webfont.ttf")
+    format("truetype");
 }
 
 @font-face {
-	font-family: "ProximaNova_altbold";
-	src: url("/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Alt\ Bold-webfont.ttf") format('truetype');
+  font-family: "ProximaNova_altbold";
+  src: url("/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Alt\ Bold-webfont.ttf")
+    format("truetype");
 }
 
 @font-face {
-	font-family: "ProximaNova_regular";
-	src: url("/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Alt\ Regular-webfont.ttf") format('truetype');
+  font-family: "ProximaNova_regular";
+  src: url("/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Alt\ Regular-webfont.ttf")
+    format("truetype");
 }
 
 @font-face {
-	font-family: "ProximaNova_thin";
-	src: url("/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Thin-webfont.ttf") format('truetype');
+  font-family: "ProximaNova_thin";
+  src: url("/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Thin-webfont.ttf")
+    format("truetype");
 }
 
 /* general stuff */
 
 .regularFont {
-	font-family: "ProximaNova_regular";
-	color: white;
-	/* line-height: 120%; */
-	font-size: large;
+  font-family: "ProximaNova_regular";
+  color: white;
+  /* line-height: 120%; */
+  font-size: large;
 }
 
 html,
 body,
 header,
 #intro {
-	width: 100%;
-	height: 100%;
-	background-color: #1d1d1b;
+  width: 100%;
+  height: 100%;
+  background-color: #1d1d1b;
 }
 
 /* Buttons */
 #logoutButton,
 #refreshButton,
 #authButton {
-	border-width: 1;
-	letter-spacing: 2px;
-	text-transform: uppercase;
-	white-space: normal;
-	text-decoration: none;
-	color: white;
-	line-height: 1;
-	border-radius: 500px;
+  border-width: 1;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  white-space: normal;
+  text-decoration: none;
+  color: white;
+  line-height: 1;
+  border-radius: 500px;
 }
-
 
 #logoutButton {
-	position: center;
-	margin-top: 30px;
-	margin-bottom: 30px;
-	bottom: 120px;
-	width: 200px;
-	font-weight: bold;
-	background-color: #1d1d1b;
-	font-size: 14px;
-	padding: 16px 48px 18px;
+  position: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  bottom: 120px;
+  width: 200px;
+  font-weight: bold;
+  background-color: #1d1d1b;
+  font-size: 14px;
+  padding: 16px 48px 18px;
 }
-
 
 /* login via spotify button on home.hbs */
 #refreshButton {
-	position: center;
-	margin-top: 60px;
-	bottom: 120px;
-	width: 300px;
-	font-weight: bold;
-	background-color: #8dc686;
-	font-size: 14px;
-	padding: 16px 48px 18px;
+  position: center;
+  margin-top: 60px;
+  bottom: 120px;
+  width: 300px;
+  font-weight: bold;
+  background-color: #8dc686;
+  font-size: 14px;
+  padding: 16px 48px 18px;
 }
 
 .refresh {
-	display: flex;
-	justify-content: flex-start;
-	flex-direction: column;
-	align-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
 }
 
 #authButton {
-	position: fixed;
-	bottom: 120px;
-	right: 20px;
-	width: 300px;
-	font-weight: bold;
-	background-color: #1d1d1b;
-	font-size: 14px;
-	padding: 16px 48px 18px;
-	letter-spacing: 2px;
+  position: fixed;
+  bottom: 120px;
+  right: 20px;
+  width: 300px;
+  font-weight: bold;
+  background-color: #1d1d1b;
+  font-size: 14px;
+  padding: 16px 48px 18px;
+  letter-spacing: 2px;
 }
 
 #intro {
-	background: url("../images/headphones.png")no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+  background: url("../images/headphones.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.typewriter h4 {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: 0.15em solid white; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: 0.15em; /* Adjust as needed */
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: white;
+  }
 }
 
 .header_content {
-	color: white;
-	font-family: "ProximaNova_altbold", Fallback, sans-serif;
+  color: white;
+  font-family: "ProximaNova_altbold", Fallback, sans-serif;
 }
 
-* {
-	margin: 0;
-	padding: 0;
-	-webkit-font-smoothing: antialiased;
-	-webkit-text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
-	text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+.typewriter {
+  margin-top: 100px;
 }
 
 body {
-	font-family: "ProximaNova", sans-serif;
-	width: 100%;
+  font-family: "ProximaNova", sans-serif;
+  width: 100%;
+}
+
+.wrapper {
+	text-align:center;
+	font-size:20px;
+	color:#fff;
+	position:relative;
+}
+
+/*
+.line {
+	width:1px;
+	height:100px;
+	color:#000;
+	background:#000;
+	margin-left:250px;
+	animation: line 5s  ease-in-out 2s infinite;
+} */
+
+.circle-2 {
+	width: 1px;
+	height: 200px;
+	background: url("../images/204U-04copy.png");
+	border: 1px white solid;
+	position:absolute;
+	top:0;
+	left:250px;
+}
+
+.circle {
+	line-height:100px;
+	width: 100px;
+	border-radius:50px;
+	height: 100px;
+	background: url("../images/204U-04copy.png");
+	border: 1px white solid;
+	position: relative;
+	animation: mymove 5s  ease-in-out 2s infinite;
+	position:absolute;
+	top:100px;
+	left:200px;
+}
+
+.cirle-2 img {
+	display: inline block;
+}
+
+.circle img {
+	display: inline block;
+}
+
+
+/* Chrome, Safari, Opera */
+@keyframes line {
+	0% { height:100px}
+	50% { height:200px}
+	100% { height:100px}
+}
+
+@keyframes mymove {
+	0% { top:100px}
+	50% { top:200px}
+	100% { top:100px}
 }
 
 .bodyPers {
-	background-color: #1d1d1b;
+  background-color: #1d1d1b;
 }
 
 ul tr {
-	list-style: none;
-	margin-bottom: 0px;
+  list-style: none;
+  margin-bottom: 0px;
 }
-
 
 .mainPersonal,
 .superContainer {
-	width: 100vw;
+  width: 100vw;
 }
 
 .welcome {
-	font-family: "ProximaNova_altbold";
-	color: #8dc686;
-	text-align: center;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	margin-top: 20px;
+  font-family: "ProximaNova_altbold";
+  color: #8dc686;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .userInfo {
-	width: 64px;
-	height: 100px;
-	font-size: 14px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+  width: 100px;
+  height: 100px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-
 #userPhoto {
-	height: 64px;
-	width: 64px;
+  height: 64px;
+  width: 64px;
 }
 
 /*header*/
 .header {
-	position: relative;
-	left: 0;
-	top: 0;
-	width: 100%;
-	background: #000000;
-	color: white;
-	z-index: 100;
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background: #000000;
+  color: white;
+  z-index: 100;
 }
 
 #logoWhite {
-	background-size: cover;
-	width: 64px;
-	height: 64px;
-	border-radius: 50%;
+  background-size: cover;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
 }
 
 .letsBoogie {
-	margin: 0;
+  margin: 0;
 }
 
 hr.line {
-	border-top: 1px solid white;
+  border-top: 1px solid white;
 }
 
 .headerP {
-	border: 0.5px solid white;
-	letter-spacing: 2px;
-	text-transform: uppercase;
-	white-space: normal;
-	text-decoration: none;
-	color: white;
-	line-height: 1;
-	border-radius: 500px;
-	padding: 12px 10px 14px;
+  border: 0.5px solid white;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  white-space: normal;
+  text-decoration: none;
+  color: white;
+  line-height: 1;
+  border-radius: 500px;
+  padding: 12px 10px 14px;
 }
 
 .headerTracks {
-	width: 40%;
-	position: center;
-	margin-left: 30%;
+  width: 40%;
+  position: center;
+  margin-left: 30%;
 }
 
 .headerArtists,
 .headerRelated {
-	width: 80%;
-	margin-left: 10%;
+  width: 80%;
+  margin-left: 10%;
 }
 
 .artistPicture {
-	display: inline-block;
+  display: inline-block;
+}
+
+.hoverImage {
+  opacity: 1;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.text {
+  color: white;
+  font-family: "ProximaNova_thin";
+  font-size: 10px;
+}
+
+.artistPicture:hover .hoverImage {
+  opacity: 0.3;
+}
+
+.artistPicture:hover .middle {
+  opacity: 1;
 }
 
 .artistList,
 .artistInfo {
-	font-family: "ProximaNova_thin";
-	color: white;
+  font-family: "ProximaNova_thin";
+  color: white;
 }
 
 .list {
-	margin-top: 25px;
+  margin-top: 25px;
 }
 
 #artistIMG {
-	background-size: cover;
-	width: 64px;
-	height: 64px;
-	margin-bottom: 20px;
+  background-size: cover;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 20px;
+}
+
+#relatedArtistsIMG {
+  background-size: cover;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 20px;
+  margin-right: 10px;
 }
 
 .mainPersonal {
-	margin-top: 40px;
+  margin-top: 40px;
 }
-
-
 
 /* NewsFeed */
 .newsfeed {
-	vertical-align: top;
-	width: 50%;
+  vertical-align: top;
+  width: 50%;
 }
 
 .newsfeed_container {
-	width: 100%;
-	height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 #newsfeedList {
-	width: 100%;
-	background: #1d1d1b;
-	margin-top: 20px;
+  width: 100%;
+  background: #1d1d1b;
+  margin-top: 20px;
 }
 
 .newsfeed_header {
-	text-align: center;
+  text-align: center;
 }
 
 table {
-	table-layout: fixed;
-	width: 100%;
-	margin: 0px;
-	padding: 0px;
+  table-layout: fixed;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
 }
 
 #albumIMG {
-	background-size: cover;
-	width: 35px;
-	height: 35px;
-	margin-bottom: 10px;
-	vertical-align: middle;
+  background-size: cover;
+  width: 35px;
+  height: 35px;
+  margin-bottom: 10px;
+  vertical-align: middle;
 }
 
 tr {
-	font-size: 12px;
-	color: white;
+  font-size: 12px;
+  color: white;
 }
 
 .table td {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .table-dark {
-	background-color: #1d1d1b;
+  background-color: #1d1d1b;
 }
 
 .table-wrapper-scroll-y {
-	display: block;
-	max-height: 500px;
-	overflow-y: auto;
-	-ms-overflow-style: -ms-autohiding-scrollbar;
+  display: block;
+  max-height: 500px;
+  overflow-y: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 .table-wrapper-scroll-y::-webkit-scrollbar {
-	background-color: #1d1d1b;
+  background-color: #1d1d1b;
 }
 
-
 .table-wrapper-scroll-y::-webkit-scrollbar-track {
-	box-shadow: inset 0 0 5px white;
-	border-radius: 10px;
+  box-shadow: inset 0 0 5px white;
+  border-radius: 10px;
 }
 
 .table-wrapper-scroll-y::-webkit-scrollbar-thumb {
-	box-shadow: inset 0 0 20px #8dc686;
-	border-radius: 20px;
+  box-shadow: inset 0 0 20px #8dc686;
+  border-radius: 20px;
 }
 
 .table td:nth-child(1),
 .table td:nth-child(4) {
-	width: 10%;
-	border-top: none;
-	vertical-align: middle;
+  width: 10%;
+  border-top: none;
+  vertical-align: middle;
 }
 
 .table td:nth-child(2) {
-	width: 30%;
-	border-top: none;
-	vertical-align: middle;
-	border-bottom: 0.2px solid white;
+  width: 30%;
+  border-top: none;
+  vertical-align: middle;
+  border-bottom: 0.2px solid white;
 }
 
 .table td:nth-child(3) {
-	width: 50%;
-	border-top: none;
-	vertical-align: middle;
-	border-bottom: 0.2px solid white;
+  width: 50%;
+  border-top: none;
+  vertical-align: middle;
+  border-bottom: 0.2px solid white;
 }
 
 .jp-play {
-	position: relative;
-	border-radius: 50%;
-	background: #1d1d1b;
-	border-color: white;
-	cursor: pointer;
-	text-align: center;
-	outline: none !important;
-	width: 30px;
-	height: 30px;
+  position: relative;
+  border-radius: 50%;
+  background: #1d1d1b;
+  border-color: white;
+  cursor: pointer;
+  text-align: center;
+  outline: none !important;
+  width: 30px;
+  height: 30px;
 }
 
 i {
-	color: #8dc686;
-	font-size: 20px;
-	text-align: center;
-	vertical-align: middle;
+  color: #8dc686;
+  font-size: 20px;
+  text-align: center;
+  vertical-align: middle;
 }
 
 /* .fas {
@@ -359,94 +484,94 @@ i {
 } */
 
 .newsfeed_list td th {
-	width: 100%;
-	/* height: 50px; */
-	background: #333232;
-	padding-left: 11px;
-	padding-right: 37px;
-	color: #FFFFFF;
-	font-size: 18px;
+  width: 100%;
+  /* height: 50px; */
+  background: #333232;
+  padding-left: 11px;
+  padding-right: 37px;
+  color: #ffffff;
+  font-size: 18px;
 }
 
 .newsfeed_list td a {
-	color: #FFFFFF;
+  color: #ffffff;
 }
 
 .newsfeed_list td:not(:last-of-type) {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 /*logout*/
 .logout {
-	position: absolute;
-	top: 50%;
-	-webkit-transform: translateY(-50%);
-	-moz-transform: translateY(-50%);
-	-ms-transform: translateY(-50%);
-	-o-transform: translateY(-50%);
-	transform: translateY(-50%);
-	right: 52px;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 52px;
 }
 
 .logout ul li a {
-	position: relative;
-	text-decoration: none;
-	color: black;
+  position: relative;
+  text-decoration: none;
+  color: black;
 }
 
 div {
-	display: block;
-	position: relative;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+  display: block;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 ul,
 tr {
-	list-style: none;
-	margin-bottom: 0px;
+  list-style: none;
+  margin-bottom: 0px;
 }
 
 p:last-of-type {
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 h1 {
-	font-size: 48px;
+  font-size: 48px;
 }
 
 h2 {
-	font-size: 36px;
+  font-size: 36px;
 }
 
 h3 {
-	font-size: 24px;
+  font-size: 24px;
 }
 
 h4 {
-	font-size: 18px;
+  font-size: 18px;
 }
 
 h5 {
-	font-size: 14px;
+  font-size: 14px;
 }
 
 /* logo inside header */
 
 .logo {
-	position: absolute;
-	top: 50%;
-	-webkit-transform: translateY(-50%);
-	-moz-transform: translateY(-50%);
-	-ms-transform: translateY(-50%);
-	-o-transform: translateY(-50%);
-	transform: translateY(-50%);
-	left: 51px;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: 51px;
 }
 
 .logo a {
-	font-size: 30px;
-	color: #FFFFFF;
+  font-size: 30px;
+  color: #ffffff;
 }
