@@ -9,7 +9,7 @@
       </div>
       <div class="userInfo">
         <div class="userImage">
-          <img id="userPhoto" class="img-circle" src="./images/cat2.jpg">
+          <img id="userPhoto" class="img-circle" src="{{userImage.url}}">
         </div>
         <div class="userImage">{{userName}}</div>
       </div>
@@ -29,7 +29,12 @@
           <ul>{{#each artistImage}}
             <li>
               <div class="artistPicture">
-                <img id="artistIMG" class="img-circle" src="{{this.[0].url}}">
+                <img id="artistIMG" class="img-circle hoverImage" src="{{this.[0].url}}">
+                <div class="middle">
+                  {{#each followedArtistName}}
+                  <div class="randomFollows">{{this.[0]}}</div>
+                  {{/each}}
+                </div>
               </div>
             </li>
             {{/each}}
@@ -55,9 +60,15 @@
               {{#each relatedTop}}
               <tr>
                 <td><img id="albumIMG" class="img-circle" src="{{this.image}}"></td>
-                <td><a href="https://open.spotify.com/artist/{{this.artistPageLink}}"target="_blank">{{this.artist}}</a></td>
-                <td><a href="https://open.spotify.com/track/{{this.link}}"target="_blank">{{this.track}}</a></td>
-                <td><a href="{{this.preview}}"target="_blank">play preview</a></td>
+                <td><a href="https://open.spotify.com/artist/{{this.artistPageLink}}" target="_blank">{{this.artist}}</a></td>
+                <td><a href="https://open.spotify.com/track/{{this.link}}" target="_blank">{{this.track}}</a></td>
+                <td><a href="{{this.preview}}" target="_blank">
+                    <div class="jp-controls-holder ml-auto">
+                      <button type="button" id="buttonPlay" class="jp-play" onclick="buttonPlayPress()">
+                        <i class="fas fa-angle-right" sytle="color: white"></i>
+                      </button>
+                    </div>
+                  </a></td>
               </tr>
               {{/each}}
             </tbody>
@@ -74,11 +85,7 @@
 
         </div>
 
-        <div class="jp-controls-holder ml-auto">
-          <button type="button" id="buttonPlay" class="jp-play" onclick="buttonPlayPress()">
-            <i class="fas fa-angle-right" sytle="color: white"></i>
-          </button>
-        </div>
+
 
       </div>
 
@@ -87,11 +94,23 @@
           <p class="regularFont font-weight-bold">ARTISTS MATCHING</p>
         </div>
         <div class="list">
-          <ul>{{#each relatedArtists}}
+          <ul>{{#each relatedArtistsImage}}
+            <li>
+              <div class="artistPicture">
+                <img id="relatedArtistsIMG" class="img-circle" src="{{this.[0].[0].url}}">
+                <img id="relatedArtistsIMG" class="img-circle" src="{{this.[1].[0].url}}">
+                <img id="relatedArtistsIMG" class="img-circle" src="{{this.[2].[0].url}}">
+                <img id="relatedArtistsIMG" class="img-circle" src="{{this.[3].[0].url}}">
+              </div>
+            </li>
+            {{/each}}
+          </ul>
+
+          {{!-- <ul>{{#each relatedArtists}}
             {{#each this}}
             <li>{{this}}</li>
             {{/each}}
-            {{/each}}</ul>
+            {{/each}}</ul> --}}
         </div>
 
       </div>

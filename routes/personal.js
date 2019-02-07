@@ -35,13 +35,19 @@ router.get('/', authCheck, (req, res) => {
 
   spotifyApi.setAccessToken(req.user.spotifyAccessToken);
   let randomArtistList1 = []
+  let userImage = []
   let relatedArtists = []
   let allTopTracks = []
   let randomImg = []
+  // let followedArtistName = []
+  let relatedArtistsImage = []
+  let allFollowedArtists = [];
+  
 
   spotifyApi.getMe()
   .then(function(data) {
     console.log('Some information about the authenticated user', data.body.images);
+    userImage.push(data.body.images);
   }, function(err) {
     console.log('Something went wrong!', err);
   });
@@ -51,7 +57,17 @@ router.get('/', authCheck, (req, res) => {
     .then(function (data) {
       //console.log('what', data.body.artists.items)
       randomArtistList1 = data.body.artists.items.sort(() => .5 - Math.random()).slice(0, 5);
+      console.log('ID', data.body)
+
+      let followedArtistObj = {
+        id: data.body.artists.items[0].id,
+        name: data.body.artists.items[0].name,
+        image: data.body.artists.items[0].images
+      }
+      randomArtistList1.forEach(el => allFollowedArtists.push(followedArtistObj));
+
       randomArtistList1.forEach(el => randomImg.push(el.images));
+      // randomArtistList1.forEach(el => followedArtistName.push(el.name))
       // console.log('artistIMG', randomImg);
       return Promise.all(randomArtistList1.map(function (item) {
         return spotifyApi.getArtistRelatedArtists(item.id)
@@ -61,7 +77,7 @@ router.get('/', authCheck, (req, res) => {
 
       let relatedArtistsId = []
       let mergedArtistsIds = []
-      let relatedArtistsImage = []
+  
 
       dataArr.forEach((data) => {
         let randomRelatedArtists = data.body.artists.sort(() => .4 - Math.random()).slice(0, 4);
@@ -74,7 +90,7 @@ router.get('/', authCheck, (req, res) => {
         let relatedArtistImageArray = randomRelatedArtists.map(x => x.images)
         relatedArtistsImage.push(relatedArtistImageArray)
         //console.log('line 74', relatedArtistArray)
-        //console.log('line 75', relatedArtistsImage[0])
+        // console.log('line 75', relatedArtistsImage[0])
 
         mergedArtistsIds = [].concat.apply([], relatedArtistsId);
         //console.log('line 66', mergedArtistsIds)
@@ -87,7 +103,7 @@ router.get('/', authCheck, (req, res) => {
 
       dataArr.forEach((artist) => {
         let selectedTop = Math.floor(Math.random() * artist.body.tracks.length);
-        console.log('track', artist.body.tracks[selectedTop])
+        // console.log('track', artist.body.tracks[selectedTop])
         let finalTracks = {
           track: artist.body.tracks[selectedTop].name,
           artist: artist.body.tracks[selectedTop].artists[0].name,
@@ -99,13 +115,18 @@ router.get('/', authCheck, (req, res) => {
         allTopTracks.push(finalTracks);
       })
 
+      console.log('artistOBJECT', allFollowedArtists)
+
       res.render('spotitest', {
         userName: userName,
         id: id,
+        userImage: userImage[0][0],
         artistlist: randomArtistList1,
+        // followedArtistName: followedArtistName,
         relatedArtists: relatedArtists,
+        relatedArtistsImage: relatedArtistsImage,
         relatedTop: allTopTracks,
-        artistImage: randomImg
+        artistImage: randomImg,
       })
     });
 
