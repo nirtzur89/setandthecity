@@ -31,7 +31,8 @@ passport.use(
     callbackURL: '/logincon'
   }, (accessToken, refreshToken, expires_in, profile, done) => {
 
-
+    console.log('accessToken', accessToken);
+    console.log('profile', profile);
     
     User.findOne({
         spotifyId: profile._json.id
@@ -58,6 +59,16 @@ passport.use(
             })
           // done(null, currentUser);
         } else {
+          console.log('new user to be created', {
+            username: profile._json.display_name,
+            email: profile._json.email,
+            spotifyId: profile._json.id,
+            spotifyAccessToken: accessToken,
+            country: profile._json.country,
+            profile: profile._json.profileUrl,
+            photo: profile._json.photos,
+            //followedArtistsCount: profile._json. 
+          });
           new User({
               username: profile._json.display_name,
               email: profile._json.email,
