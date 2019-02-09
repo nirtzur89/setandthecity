@@ -88,7 +88,7 @@ header,
 
 #authButton {
   position: fixed;
-  bottom: 120px;
+  bottom: 90px;
   right: 20px;
   width: 300px;
   font-weight: bold;
@@ -152,7 +152,7 @@ body {
 
 .c {
   font-family: "ProximaNova_altbold", sans-serif;
-  color: #8dc686;
+  color: white;
   width: 100%;
   text-align:center;
   display:block;
@@ -201,6 +201,22 @@ max-width: 600;
     30% {width:70%;}
     80% {opacity:1;}
     100% {opacity:0;width:70%;}
+}
+
+.color-change-3x {
+	animation: color-change-3x 4s linear infinite alternate both;
+}
+
+ @keyframes color-change-3x {
+  0% {
+    background: white;
+  }
+  50% {
+    background: #1d1d1b;
+  }
+  100% {
+    background: #8dc686;
+  }
 }
 
 .bodyPers {
